@@ -1,0 +1,49 @@
+
+[
+  {
+    "tripName" : "After-Graduation Trip",
+    "tripLocation": "San Diego",
+    "tripStartDate":"2017-06-10",
+    "tripEndDate" : "2017-06-13",
+    //"participants":
+    "voteDue": "2017-03-10",
+    "tripActiveState": "True",
+    "activityList":[
+    {
+      "Name":"Sea World",
+      "voteNum":"5",
+      "comment":"Love dolphines and rollercoaster!"
+      //to do"yelpURL":
+    },
+    {
+    "Name":"Balboa Park",
+    "voteNum":"4",
+    "comment":"Amazing architectures."
+    }
+    ]
+  },
+  {
+    "tripName" : "Spring-Break Trip",
+    "tripLocation": "Las Vegas",
+    "tripStartDate":"2017-03-10",
+    "tripEndDate" : "2017-03-13",
+    //"participants":
+    "voteDue": "2017-03-10",
+    "voteActiveState": "False",
+    "activityList":[
+    {
+      "Name":"Venice",
+      "voteNum":"4",
+      "comment":"Love dolphines and rollercoaster!"
+      //to do"yelpURL":
+    },
+    {
+    "Name":"Wynn",
+    "voteNum":"2",
+    "comment":"Amazing architectures."
+    }
+    ]
+      
+  }
+
+]
