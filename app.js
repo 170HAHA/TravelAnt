@@ -40,7 +40,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/myfriends', index.view);
+app.get('/myfriends', myfriends.view);
 app.get('/project/:id', project.projectInfo);
 app.get('/addTrip', addTrip.addTrip);
 // Example route
