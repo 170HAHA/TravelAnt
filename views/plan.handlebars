@@ -148,6 +148,21 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <script>
+    $(".fa-arrow-up").click(function(e){
+        e.preventDefault();
+        var votes = $(this).parent().next();
+        var votes_num = votes.text();
+        
+        if ($(this).hasClass("disabled")){
+            votes_num = parseInt(votes_num) - 1;
+            $(this).removeClass("disabled");
+        }
+        else{
+            votes_num = parseInt(votes_num) + 1;
+            $(this).addClass("disabled");
+        } 
+        votes.text(votes_num); 
+      });
     $("#wrapper").toggleClass("toggled");
     $("#menu-button").click(function(e) {
         e.preventDefault();
