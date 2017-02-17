@@ -1,18 +1,38 @@
 var data = require("../data.json");
+var dataFinished = require("../dataFinished.json");
 
-exports.addTrip = function(req, res) {    
-	// Your code goes here
-	//var newName = req.query.name;
-	//var newDescription = req.query.description;
-	//var newFriend = {
-	//			"name": newName,
-    //				"description": newDescription,
-    //				"imageURL": "http://lorempixel.com/400/400/people"
-	//		};
-	//data.friends.push(newFriend);
-	//console.log(data);
-	res.render('addTrip',{
-			//'friendData': data
-		}
-	);
- }
+exports.view = function(req, res) {   
+    res.render('addTrip', {});
+}
+
+exports.add = function(req, res) {  
+    var tripName = req.query.tripName;
+    var location = req.query.destination;
+    var startDate = req.query.startDate;
+    var endDate = req.query.endDate;
+    //var participants = req.query.participants;
+	var newTrip = {
+                "tripName" : tripName,
+                "tripLocation":  location,
+                "tripStartDate": startDate,
+                "tripEndDate" : endDate,
+                "voteDue": startDate
+                //"participants": participants
+			}
+	data.push(newTrip);
+	console.log(data);
+    res.render('index', {'Routesdata': data, 'RoutesdataFinished': dataFinished});
+
+}
+/*
+[
+                {
+                "Name" : "John",
+                "imageUrl": "img/profile3.jpg"
+                },
+                {
+                "Name" : "Amy",
+                "imageUrl": "img/profile4.jpg"
+                }
+                ],
+                */
