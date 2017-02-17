@@ -1,0 +1,19 @@
+
+[
+    {
+    "Name" : "Venice",
+    "imageUrl": "img/profile1.jpg"
+    },
+    {
+    "Name" : "Tomas",
+    "imageUrl": "img/profile2.jpg"
+    },
+    {
+    "Name" : "John",
+    "imageUrl": "img/profile3.jpg"
+    },
+    {
+    "Name" : "Amy",
+    "imageUrl": "img/profile4.jpg"
+    }
+]

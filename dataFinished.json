@@ -1,14 +1,15 @@
 
 [
-    
     {
-    "planURL": "/plan1",
-    "tripName" : "After-Graduation Trip",
+    "tripName" : "2016 After-Graduation Trip",
     "tripLocation": "San Diego",
-    "tripStartDate":"2017-06-10",
-    "tripEndDate" : "2017-06-13",
-    "voteDue": "2017-06-10",
+    "tripStartDate":"2016-06-10",
+    "tripEndDate" : "2016-06-13",
     "participants":[
+    {
+    "Name" : "Tomas",
+    "imageUrl": "img/profile2.jpg"
+    },
     {
     "Name" : "John",
     "imageUrl": "img/profile3.jpg"
@@ -35,21 +36,23 @@
     ]
   },
     {
-    "planURL": "/plan2",
-    "tripName" : "Spring-Break Trip",
+    "tripName" : "2016 Spring-Break Trip",
     "tripLocation": "Las Vegas",
-    "tripStartDate":"2017-03-10",
-    "tripEndDate" : "2017-03-13",
+    "tripStartDate":"2016-03-10",
+    "tripEndDate" : "2016-03-13",
     
-    "voteDue": "2017-03-10",
     "participants":[
     {
     "Name" : "Venice",
     "imageUrl": "img/profile1.jpg"
     },
     {
-    "Name" : "Tomas",
-    "imageUrl": "img/profile2.jpg"
+    "Name" : "John",
+    "imageUrl": "img/profile3.jpg"
+    },
+    {
+    "Name" : "Amy",
+    "imageUrl": "img/profile4.jpg"
     }
     ],
     "activityList":[
