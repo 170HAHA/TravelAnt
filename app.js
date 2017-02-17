@@ -12,10 +12,14 @@ var index = require('./routes/index');
 var project = require('./routes/project');
 var palette = require('./routes/palette');
 var myfriends = require('./routes/friends');
+
 var plan = require('./routes/plan');
 var planfinished = require('./routes/planfinished');
-var addTrip = require('./routes/addTrip');
 
+//var plan = require('./routes/plan');
+
+var addTrip = require('./routes/addTrip');
+var login = require('./routes/login');
 // Example route
 // var user = require('./routes/user');
 
@@ -42,12 +46,20 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
+app.get('/', login.view);
+app.get('/index', index.view);
 app.get('/myfriends', myfriends.view);
+
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
 //app.get('/project/:id', project.projectInfo);
 app.get('/addTrip', addTrip.addTrip);
+
+//app.get''
+app.get('/project/:id', project.projectInfo);
+app.get('/addTrip', addTrip.view);
+app.get('/addT', addTrip.add);
+
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);
