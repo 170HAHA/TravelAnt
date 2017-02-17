@@ -13,6 +13,8 @@ var project = require('./routes/project');
 var palette = require('./routes/palette');
 var myfriends = require('./routes/friends');
 var plan = require('./routes/plan');
+var addTrip = require('./routes/addTrip');
+
 // Example route
 // var user = require('./routes/user');
 
@@ -43,6 +45,7 @@ app.get('/', index.view);
 app.get('/myfriends', myfriends.view);
 //app.get''
 app.get('/project/:id', project.projectInfo);
+app.get('/addTrip', addTrip.addTrip);
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);
