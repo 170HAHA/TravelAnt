@@ -50,11 +50,10 @@ app.get('/myfriends', myfriends.view);
 
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
-app.get('/addTrip', addTrip.addTrip);
 //app.get''
-app.get('/project/:id', project.projectInfo);
+//app.get('/project/:id', project.projectInfo);
 app.get('/addTrip', addTrip.view);
-app.get('/addT', addTrip.add);
+app.get('/addT', addTrip.addTrip);
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);

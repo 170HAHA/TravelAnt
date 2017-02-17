@@ -5,7 +5,7 @@ exports.view = function(req, res) {
     res.render('addTrip', {});
 }
 
-exports.add = function(req, res) {  
+exports.addTrip = function(req, res) {  
     var tripName = req.query.tripName;
     var location = req.query.destination;
     var startDate = req.query.startDate;
