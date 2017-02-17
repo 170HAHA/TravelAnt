@@ -1,0 +1,342 @@
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+
+.row-footer{
+    background-color: #AfAfAf;
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron {
+    padding:70px 30px 70px 30px;
+    margin:0px auto;
+    background: #7986CB ;
+    color:floralwhite;
+}
+
+address{
+    font-size:80%;
+    margin:0px;
+    color:#0f0f0f;
+}
+
+body{
+    z-index: 0;
+    font-family: Avenir;
+}
+
+.navbar-inverse{
+    background: #303F9F;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background: #1A237E;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a,
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #303F9F;
+    color:#eeeeee;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu> li> a:hover {
+    color:#000000;
+}
+
+.navbar-custom {
+  background: #F7F7F7;
+  font-family: Avenir; 
+  font-weight: 700;
+  padding:10px 0px;
+}
+
+.navbar-custom .navbar-header .navbar-brand{
+    text-shadow: 2px 1px #dddddd;
+    color: #FF6600;
+    font-size: 36px;
+    vertical-align: middle;
+    padding-top: 14px;
+}
+
+.navbar-custom .navbar-collapse .title-add > li > a{
+    color: #FF6600;
+    font-size: 20px;
+}
+
+#wrapper #sidebar-wrapper, #wrapper #sidebar-wrapper .sidebar-nav > li > a{
+    background: #52575E;
+    font-family: Avenir;
+    color:#F3F3F3;
+}
+
+.navbar-fixed-bottom,.navbar-fixed-top{
+    position: absolute;
+}
+
+#menu-button{
+    color:#FF6600; 
+    font-size:26px; 
+    background-color: transparent; 
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.navbar-toggle{
+    border:none;
+    font-size:25px;
+}
+
+#page-content-wrapper .container-fluid{
+    padding-top:60px;
+}
+
+#content.thumbnail{
+    padding-top: 20px;
+}
+
+#trip-list.thumbnail{
+    background-color: #EEEEEE;
+}
+
+.well.well-lg{
+    border-radius: 3px;
+    border-color: transparent;
+    background-image:none;
+    background-color: #EEEEEE;
+    padding-top: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.trip-list{
+    padding-top: 20px;
+}
+
+h1{
+    font-family:avenir, 'avenir next', helvetica, arial, sans-serif;
+    text-transform:capitalize;
+    font-variant:small-caps;
+}
+
+h3{
+    display:inline;
+    font-size: 25px;
+    font-family:avenir, 'avenir next', helvetica, sans-serif;
+}
+h4{
+    padding-top: 20px;
+    display: inline;
+    font-weight:lighter;
+    font-size: 18px;
+}
+
+.trip-content{
+    margin: 10px;
+}
+
+.trip-detail{
+    background-color:transparent; 
+    font-size:30px;
+}
+
+
+
+.trip-date{
+    margin-top:15px;
+}
+
+.trip-progress{
+    margin-top:30px;
+}
+
+.progress{
+    width: 80%;
+    height: 13px;
+    float: right;
+}
+
+.progress-bar{
+    background-color: #ffb366;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;   
+}
+
+
+@media (max-width: 768px){
+    .progress{
+        float:left;
+    }
+    .trip-due{
+        float:left;
+    }
+}
+@media (min-width: 768px){
+    .progress{
+        float:right;
+    }
+    .trip-due{
+        float:right;
+    }
+}
+
+.btn-warning{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-image: none;
+}
+
+.trip-button{
+    float:right;
+    width:80px;
+    height: 30px;
+    border-radius: 5px;
+    border-color: #CC9933;
+    color: #F3F3F3;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.trip-button-plan{
+    background-color: #FF5500;
+}
+
+.trip-button-view{
+    background-color: #ff8000;
+}
+
+.img-circle{
+    width: 40px;
+    height: 40px;
+}
+
+.profile-down{
+    margin-left: 10px;
+}
+
+.trip-foot{
+    margin-top:30px;
+}
+
+.fa.fa-edit{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.page-content{
+    margin-top:80px;
+}
+
+.trip-member > a{
+    color: #444444;
+}
+
+.row.trip-detail-progress{
+    margin-top: 25px;
+}
+
+ul{
+    list-style-type: none; 
+    list-style-position:inside;
+    margin:0; 
+    padding:0; 
+}
+
+.activity-list{
+    margin-top: 50px;
+}
+
+
+.well.well-lg.activity-item{
+    height: 180px;
+    padding: 0px;
+}
+
+.activity-img{
+    width:100%;
+    height: 100%;
+}
+
+@media(max-width: 992px){
+    .activity-img{
+        display: none;
+    }
+}
+
+.img-rounded{
+    border-radius: 3px;
+}
+
+.activity-content{
+    margin: 30px;
+}
+
+.activity-comment{
+    margin-top: 10px;
+}
+
+.activity-vote{
+    font-size: 30px;
+    float:right;
+    margin-top: 20px;  
+    color: #FF8800;
+}
+
+.activity-vote .activity-vote-num{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.activity .trip-member{
+    margin-top: 10px;
+}
+
+.sidebar-brand{
+    margin:40px;
+    text-align: center;
+}
+
+.sidebar-brand div{
+    text-indent:-30px;
+}
+
+.sidebar-brand .img-circle{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto;
+}
+
+.back{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.back .btn{
+    background-color: #EEEEEE;
+    float:left;
+}
+
+.back > a{
+    color: #444444;
+}
+
+.activity-vote > a{
+    color: #FF8800;
+}
+
+h1 > a{
+    color: #444444;
+}
