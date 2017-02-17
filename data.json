@@ -2,7 +2,7 @@
 [
     
     {
-    "planURL": "/plan1",
+    "tripID": "8",
     "tripName" : "After-Graduation Trip",
     "tripLocation": "San Diego",
     "tripStartDate":"2017-06-10",
@@ -11,11 +11,11 @@
     "participants":[
     {
     "Name" : "John",
-    "imageUrl": "img/profile3.jpg"
+    "imageUrl": "/img/profile3.jpg"
     },
     {
     "Name" : "Amy",
-    "imageUrl": "img/profile4.jpg"
+    "imageUrl": "/img/profile4.jpg"
     }
     ],
     "activityList":[
@@ -23,19 +23,19 @@
       "Name":"Sea World",
       "voteNum":"5",
       "comment":"Love dolphines and rollercoaster!",
-      "imageUrl": "img/profile3.jpg"
+      "imageUrl": "/img/seaworld.jpg"
       
     },
     {
     "Name":"Balboa Park",
     "voteNum":"4",
     "comment":"Amazing architectures.",
-    "imageUrl": "img/profile4.jpg"
+    "imageUrl": "/img/balboapark.jpg"
     }
     ]
   },
     {
-    "planURL": "/plan2",
+    "tripID": "9",
     "tripName" : "Spring-Break Trip",
     "tripLocation": "Las Vegas",
     "tripStartDate":"2017-03-10",
@@ -45,11 +45,11 @@
     "participants":[
     {
     "Name" : "Venice",
-    "imageUrl": "img/profile1.jpg"
+    "imageUrl": "/img/profile1.jpg"
     },
     {
     "Name" : "Tomas",
-    "imageUrl": "img/profile2.jpg"
+    "imageUrl": "/img/profile2.jpg"
     }
     ],
     "activityList":[
@@ -57,13 +57,13 @@
       "Name":"Venice",
       "voteNum":"4",
       "comment":"Love dolphines and rollercoaster!",
-      "imageUrl": "img/profile1.jpg"
+      "imageUrl": "/img/venice.jpg"
     },
     {
     "Name":"Wynn",
     "voteNum":"2",
     "comment":"Amazing architectures.",
-    "imageUrl": "img/profile2.jpg"
+    "imageUrl": "/img/Wynn.jpg"
     }
     ]
       

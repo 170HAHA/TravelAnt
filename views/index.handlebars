@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
-                    <h1>Your Trips</h1>
+                    <h1>My Trips</h1>
                     <div class="trip-list">
                         <ul>
                             {{#each Routesdata}}
@@ -110,7 +110,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href="./trip1.html" role="button" class="btn btn-warning trip-button trip-button-plan">
+                                                <a href=plan/{{tripID}} role="button" class="btn btn-warning trip-button trip-button-plan">
                                                     Plan
                                                 </a>
                                             </div>
@@ -144,7 +144,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href="./trip1.html" role="button" class="btn btn-warning trip-button trip-button-plan">
+                                                <a href=planfinished/{{tripID}} role="button" class="btn btn-warning trip-button trip-button-plan">
                                                     View
                                                 </a>
                                             </div>
@@ -177,5 +177,4 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-</body>
 </body>

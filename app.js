@@ -13,6 +13,7 @@ var project = require('./routes/project');
 var palette = require('./routes/palette');
 var myfriends = require('./routes/friends');
 var plan = require('./routes/plan');
+var planfinished = require('./routes/planfinished');
 var addTrip = require('./routes/addTrip');
 
 // Example route
@@ -43,8 +44,9 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/myfriends', myfriends.view);
-//app.get''
-app.get('/project/:id', project.projectInfo);
+app.get('/plan/:tripID', plan.planInfo);
+app.get('/planfinished/:tripID', planfinished.planInfo);
+//app.get('/project/:id', project.projectInfo);
 app.get('/addTrip', addTrip.addTrip);
 // Example route
 // app.get('/users', user.list);
