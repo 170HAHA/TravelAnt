@@ -10,13 +10,19 @@ exports.addTrip = function(req, res) {
     var location = req.query.destination;
     var startDate = req.query.startDate;
     var endDate = req.query.endDate;
+    
+       
+    var dueDate = req.query.dueDate;
+    if (dueDate == ""){
+       dueDate = startDate;
+    }
     //var participants = req.query.participants;
 	var newTrip = {
                 "tripName" : tripName,
                 "tripLocation":  location,
                 "tripStartDate": startDate,
                 "tripEndDate" : endDate,
-                "voteDue": startDate
+                "voteDue": dueDate
                 //"participants": participants
 			}
 	data.push(newTrip);

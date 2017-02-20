@@ -12,65 +12,160 @@
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
+
 <body>
-<div class= "addbox">
     
-<form class="form-horizontal" method="get" action="/addT">
-<fieldset>
 
-<!-- Form Name -->
-<!--<legend>TravelAnt</legend> !-->
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">TripName</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="tripName" type="text" placeholder="" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Destination</label>  
-  <div class="col-md-4">
-  <input id="textinput" name="destination" type="text" placeholder="" class="form-control input-md">
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="startDate">Start Date</label>  
-  <div class="col-md-4">
-  <input id="startDate" name="startDate" type="text" placeholder="2017-01-01" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="enddate">End Date</label>  
-  <div class="col-md-4">
-  <input id="enddate" name="endDate" type="text" placeholder="2017-01-01" class="form-control input-md">
-    
-  </div>
-</div>
-
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Create"></label>
-  <div class="col-md-8">
-    <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
-    <button id="Cancel" name="Cancel" type="button" class="btn btn-danger" action>Cancel</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <img class="img-circle" src="img/profile3.jpg">
+                </img>
+                <div>
+                    Daniel
+                </div>
+            </li>
+            <li>
+                <a href="/index">Home</a>
+            </li>
+            <li>
+                <a href="/myfriends">My Friends</a>
+            </li>
+            <li>
+                <a href="/index">Settings</a>
+            </li>
+            <li>
+                <a href="/index">Help</a>
+            </li>
+            <li>
+                <a href="/index">Log Out</a>
+            </li>
+        </ul>
     </div>
+
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+            <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="color:#FF6600">
+                        <span class="sr-only">Toggle navigation</span><i class="fa fa-plus"></i>
+                    </button>
+                    <a class="navbar-brand" id="app-name" href="/index"><span style="padding-right: 10px;background-color: transparent;"><button type="button" id="menu-button">
+                    	<i class="fa fa-bars"></i>
+                    </button></span>TravelAnt</a>
+                </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right title-add">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li>
+                            <a href="/addTrip"><i class="fa fa-plane"></i>   Add trip</a>
+                        </li>
+                        <li>
+                            <a href="/index"><i class="fa fa-user"></i>   Add friend</a>
+                        </li>
+                    </ul>
+                </div>
+            <!-- /.navbar-collapse -->
+            </div>
+        <!-- /.container-fluid -->
+        </nav>
     
-<script src="js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
+                    <h1>Add trip</h1>
+                       <div class = "well well-lg">
+                        <form class="form-horizontal" method="get" action="/addT">
+                            <fieldset>
+
+                            <!-- Form Name -->
+                            <!--<legend></legend> !-->
+
+                            <!-- TripName Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="textinput">TripName</label>  
+                              <div class="col-md-4">
+                              <input id="textinput" name="tripName" type="text" placeholder="" class="form-control input-md" required>
+
+                              </div>
+                            </div>
+
+                            <!-- Destination Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="textinput">Destination</label>  
+                              <div class="col-md-4">
+                              <input id="textinput" name="destination" type="text" placeholder="" class="form-control input-md" required>
+                              </div>
+                            </div>
+
+                            <!-- Start Date Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="startDate">Start Date</label>  
+                              <div class="col-md-4">
+                              <input id="startDate" name="startDate" type="date" class="form-control input-md" required>
+
+                              </div>
+                            </div>
+
+                            <!-- End Date Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="enddate">End Date</label>  
+                              <div class="col-md-4">
+                              <input id="enddate" name="endDate" type="date" class="form-control input-md" required>
+
+                              </div>
+                            </div>
+                                
+                            <!-- Due Date Text input-->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="enddate">Vote Due Date</label>  
+                              <div class="col-md-4">
+                              <input id="duedate" name="dueDate" type="date"  class="form-control input-md">
+                              <p class="help-block">Default Due Date is the same with Start Date.</p>
+
+                              </div>
+                            </div>
+
+
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Button (Double) -->
+                            <div class="form-group">
+                              <label class="col-md-4 control-label" for="Create"></label>
+                              <div class="col-md-8">
+                                <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
+                             <!--Button   <button id="Cancel" name="Cancel" type="button" class="btn btn-danger" action="\index">Cancel</button> -->
+                              </div>
+                            </div>
+
+                            </fieldset>
+                        </form>
+                        </div>
+                    </div>
+
+
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+    $("#wrapper").toggleClass("toggled");
+    $("#menu-button").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
