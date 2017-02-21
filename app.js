@@ -18,8 +18,8 @@ var planfinished = require('./routes/planfinished');
 //var plan = require('./routes/plan');
 var addTrip = require('./routes/addTrip');
 var login = require('./routes/login');
-// Example route
-// var user = require('./routes/user');
+
+//var yelptest = require('./routes/yelptest');
 
 var app = express();
 
@@ -50,13 +50,11 @@ app.get('/myfriends', myfriends.view);
 
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
-//app.get''
-//app.get('/project/:id', project.projectInfo);
+
 app.get('/addTrip', addTrip.view);
 app.get('/addT', addTrip.addTrip);
-// Example route
-// app.get('/users', user.list);
-//app.get('/palette', palette.randomPalette);
+
+//app.get('/yelptest', yelptest.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
