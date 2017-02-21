@@ -19,6 +19,7 @@ var planfinished = require('./routes/planfinished');
 var addTrip = require('./routes/addTrip');
 var login = require('./routes/login');
 var addFriend = require('./routes/addFriend');
+var settings = require('./routes/settings');
 // Example route
 // var user = require('./routes/user');
 
@@ -57,6 +58,8 @@ app.get('/addTrip', addTrip.view);
 app.get('/addT', addTrip.add);
 app.get('/addFriend', addFriend.view);
 app.get('/addF', addFriend.add);
+app.get('/settings',settings.view);
+app.get('/submitSettings',settings.submitStgs);
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);
