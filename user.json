@@ -1,0 +1,14 @@
+[
+    {
+        "userName": "Amy",
+        "imgURL": "img/profile1.jpg",
+        "trips": [],
+        "friends": []
+    },
+    {
+        "userName": "Bob",
+        "imgURL": "img/profile2.jpg",
+        "trips": [],
+        "friends": []
+    }
+]

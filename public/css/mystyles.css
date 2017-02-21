@@ -342,7 +342,7 @@ h1 > a{
 }
 .addbox {
     margin: 0 auto;
-    width: 550px;
+    width: 600px;
     position: relative;
     margin-top: 10%;
     z-index: 999;
@@ -374,4 +374,7 @@ h1 > a{
     margin-top: 20%;
     /*text-transform: uppercase;*/
     letter-spacing: 4px;
+}
+.v-select {
+   background: white;!important 
 }

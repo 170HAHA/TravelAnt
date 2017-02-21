@@ -1,0 +1,21 @@
+
+[
+    
+    {
+    "tripName" : "After-Graduation Trip",
+    "tripLocation": "San Diego",
+    "tripStartDate":"06/10/2016",
+    "tripEndDate" : "06/13/2016",
+    "voteDue": "06/05/2016",
+    "participants":[],
+    "activityList":[]
+  },{
+    "tripName" : "Spring-Break Trip",
+    "tripLocation": "Las Vegas",
+    "tripStartDate":"03/10/2016",
+    "tripEndDate" : "03/14/2016",
+    "voteDue": "02/10/2016",
+    "participants":[],
+    "activityList":[]
+  }
+]
