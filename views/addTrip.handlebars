@@ -11,6 +11,8 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap-social.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
+    <script src="http://unpkg.com/vue@latest"></script>
+    <script src="http://unpkg.com/vue-select@latest"></script>
 </head>
 
 <body>
@@ -20,11 +22,8 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg">
-                </img>
-                <div>
-                    Daniel
-                </div>
+                <img class="img-circle" src="img/profile3.jpg"> </img>
+                <div>Daniel</div>
             </li>
             <li>
                 <a href="/index">Home</a>
@@ -64,10 +63,10 @@
                             <a href="#page-top"></a>
                         </li>
                         <li>
-                            <a href="/addTrip"><i class="fa fa-plane"></i>   Add trip</a>
+                            <a href="/addTrip"><i class="fa fa-plane"></i>Add trip</a>
                         </li>
                         <li>
-                            <a href="/index"><i class="fa fa-user"></i>   Add friend</a>
+                            <a href="/addFriend"><i class="fa fa-user"></i>Add friend</a>
                         </li>
                     </ul>
                 </div>
@@ -80,81 +79,76 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>Add trip</h1>
-                       <div class = "well well-lg">
-                        <form class="form-horizontal" method="get" action="/addT">
-                            <fieldset>
+                        <div class = "well well-lg">
+                            <form class="form-horizontal" method="get" action="/addT">
+                                <fieldset>
 
-                            <!-- Form Name -->
-                            <!--<legend></legend> !-->
+                                <!-- TripName Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label" for="textinput">TripName</label>  
+                                  <div class="col-md-4">
+                                  <input id="textinput" name="tripName" type="text" placeholder="" class="form-control input-md" required>
 
-                            <!-- TripName Text input-->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="textinput">TripName</label>  
-                              <div class="col-md-4">
-                              <input id="textinput" name="tripName" type="text" placeholder="" class="form-control input-md" required>
+                                  </div>
+                                </div>
 
-                              </div>
-                            </div>
+                                <!-- Destination Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label" for="textinput">Destination</label>  
+                                  <div class="col-md-4">
+                                  <input id="destination" name="destination" type="text" placeholder="" class="form-control input-md" required>
+                                  </div>
+                                </div>
 
-                            <!-- Destination Text input-->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="textinput">Destination</label>  
-                              <div class="col-md-4">
-                              <input id="textinput" name="destination" type="text" placeholder="" class="form-control input-md" required>
-                              </div>
-                            </div>
+                                <!-- Start Date Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label" for="startDate">Start Date</label>  
+                                  <div class="col-md-4">
+                                  <input id="startDate" name="startDate" type="date" class="form-control input-md" required>
 
-                            <!-- Start Date Text input-->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="startDate">Start Date</label>  
-                              <div class="col-md-4">
-                              <input id="startDate" name="startDate" type="date" class="form-control input-md" required>
+                                  </div>
+                                </div>
 
-                              </div>
-                            </div>
+                                <!-- End Date Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label" for="enddate">End Date</label>  
+                                  <div class="col-md-4">
+                                  <input id="enddate" name="endDate" type="date" class="form-control input-md" required>
 
-                            <!-- End Date Text input-->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="enddate">End Date</label>  
-                              <div class="col-md-4">
-                              <input id="enddate" name="endDate" type="date" class="form-control input-md" required>
+                                  </div>
+                                </div>
 
-                              </div>
-                            </div>
-                                
-                            <!-- Due Date Text input-->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="enddate">Vote Due Date</label>  
-                              <div class="col-md-4">
-                              <input id="duedate" name="dueDate" type="date"  class="form-control input-md">
-                              <p class="help-block">Default Due Date is the same with Start Date.</p>
-
-                              </div>
-                            </div>
-
-
-
-                                            
-                                        </div>
+                                <!-- Due Date Text input-->
+                                <div class="form-group">
+                                  <label class="col-md-4 control-label" for="enddate">Vote Due Date</label>  
+                                  <div class="col-md-4">
+                                  <input id="duedate" name="dueDate" type="date" class="form-control input-md">
+                                  <p class="help-block">Default Due Date is the same with Start Date.</p>
+                                  </div>
+                                </div>
+                                <!-- Invite Friends-->
+                                <div id="invite-friends" class="form-group">
+                                    <label class="col-md-4 control-label" for="enddate">Invite Friends</label> 
+                                    <div class="col-md-4">
+                                    <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
+                                    <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Button (Double) -->
-                            <div class="form-group">
-                              <label class="col-md-4 control-label" for="Create"></label>
-                              <div class="col-md-8">
-                                <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
-                             <!--Button   <button id="Cancel" name="Cancel" type="button" class="btn btn-danger" action="\index">Cancel</button> -->
-                              </div>
-                            </div>
+                                <!-- Button (Double) -->
+                                <div class="form-group text-center">                    
+                                    <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
+                                    <a href="/index" role="button" class="btn btn-danger">Cancel</a>       
+                                </div>
 
-                            </fieldset>
-                        </form>
+                                </fieldset>
+                            </form>
                         </div>
-                    </div>
-
-
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script src="js/jquery.js"></script>
 
@@ -167,5 +161,16 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    
+    </script>
+    <script>
+        Vue.component('v-select', VueSelect.VueSelect);
+        new Vue({
+          el: '#invite-friends',
+          data: {
+          selected: null,
+          options: ['Venice','Tomas','John','Amy']
+          }
+        });
     </script>
 </body>
