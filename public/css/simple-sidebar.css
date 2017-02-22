@@ -100,21 +100,21 @@
     background: none;
 }
 
-@media(min-width:768px) {
+/*@media(min-width:768px) {*/
     #wrapper {
-        padding-left: 250px;
+        padding-left: 0px;
     }
 
     #wrapper.toggled {
-        padding-left: 0;
+        padding-left: 250px;
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        width: 0px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 0;
+        width: 250px;
     }
 
     #page-content-wrapper {
@@ -126,4 +126,4 @@
         position: relative;
         margin-right: 0;
     }
-}
+/*}*/

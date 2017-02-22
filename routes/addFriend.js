@@ -13,5 +13,5 @@ exports.add = function(req, res) {
 			}
 	myFriends.push(newFriends);
 	console.log(myFriends);
-    res.render('myfriends', {'Friends': myFriends});
+    res.render('myfriends', {'friends': myFriends});
 }

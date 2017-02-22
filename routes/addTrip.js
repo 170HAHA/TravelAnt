@@ -3,10 +3,28 @@
 var path = require('path');
 var models = require('../models');
 
-exports.view = function(req, res) {   
-    res.render('addTrip', {});
+exports.view = function(req, res) {
+    var userID = req.session.user._id;
+    console.log("userID" + userID);
+    
+    models.User
+    .find({_id: userID})
+    .populate('_friends')
+    .exec(function(err, user){
+        console.log(user[0]);
+        
+        var friends = [];
+        for (var i = 0; i < user[0]._friends.length; ++i){
+            console.log(user[0]._friends[i].userName);
+            friends.push(user[0]._friends[i].userName);
+        }
+        console.log(friends);
+        res.render('addTrip', {"Friends": 'Amy'});
+    });
+    
+    //res.render('addTrip', {});
     //res.sendFile(path.join(__dirname+ '../views/addTrip.html' ));
-    console.log("__dirname");
+    //console.log("__dirname");
 }
 
 exports.add = function(req, res) {  

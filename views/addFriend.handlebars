@@ -113,7 +113,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-    $("#wrapper").toggleClass("toggled");
+ //   $("#wrapper").toggleClass("toggled");
     $("#menu-button").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -125,8 +125,8 @@
         new Vue({
           el: '#add-friends',
           data: {
-          selected: null,
-          options: ['Venice','Tomas','John','Amy']
+              selected: null,
+              options: {{friends}}//['Venice','Tomas','John','Amy']
           }
         });
     </script>
