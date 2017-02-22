@@ -14,7 +14,8 @@ exports.view = function(req, res){
     console.log("USer Id: ", userID);
     
     var nowTime = new Date();
-
+    
+    
     models.User
     .find({_id: userID})
     .populate({

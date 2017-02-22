@@ -2,28 +2,19 @@
  * GET home page.
  */
 //var data = require("../data.json");
+var models = require("../models");
 
 exports.planInfo = function(req, res){
-    var tripID = req.param._id;
+    var tripID = req.params.tripID;
+    
+    console.log("tripID: " + tripID);
     
     models.Trip
     .find({_id: tripID})
-    .populate('_activitiyList')
+    .populate('_activityList _participants')
     .exec(function(err, trip){
-        res.render('plan', trip[0]._activityList);
+        console.log("Plan: " + trip[0]);
+        res.render('plan', {data: trip[0]});
     });
-    /*
-    var planID = req.params.tripID;
-    var tgt
-    for(i=0;i<Object.keys(data).length;i++) {
-        if(data[i].tripID == planID) {
-            tgt = i;
-            tgt = parseInt(tgt);
-            break;
-        }
-    }
-  res.render('plan', {
-      'data':data[tgt]
-  });  
-  */
+    
 };
