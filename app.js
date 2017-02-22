@@ -6,7 +6,10 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var moment = require('moment');
 
 var index = require('./routes/index');
 var project = require('./routes/project');
@@ -24,14 +27,32 @@ var settings = require('./routes/settings');
 // Example route
 // var user = require('./routes/user');
 
-
 var app = express();
+
+// Connect to the Mongo database, whether locally or on Heroku
+// MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
+var local_database_name = 'travelant';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
+
+var hbsEngine = handlebars.create({
+    helpers: {
+        dateFormat: function (date, format) {
+            return moment(date).format(format);
+        }
+    }
+});
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', handlebars());
+//app.engine('handlebars', handlebars());
+//app.set('view engine', 'handlebars');
+app.engine('handlebars', hbsEngine.engine);
 app.set('view engine', 'handlebars');
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -41,14 +62,34 @@ app.use(express.cookieParser('Intro HCI secret key'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('express-session')({
+    key: 'session',
+    secret: 'SUPER SECRET SECRET',
+    store: require('mongoose-session')(mongoose)
+}));
+
+app.use(function(req, res, next){
+    res.locals.user = req.session.user;
+    next();
+});
 
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+function authentication(req, res, next) {
+  if (!req.session.user) {
+    req.session.error='please signin first';
+    return res.redirect('/');
+  }
+  next();
+}
+
 // Add routes here
 app.get('/', login.view);
+app.get('/login', login.userLogIn);
+//app.get('/index', authentication);
 app.get('/index', index.view);
 app.get('/myfriends', myfriends.view);
 

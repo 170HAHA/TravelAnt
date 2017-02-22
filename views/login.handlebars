@@ -212,11 +212,12 @@ form.login a:hover
                 <p class="slogan"> Makes Your Travel Easier.</p>
 
                 <div id = "loginbox">
-                <form class="login" method="get" action="/index">
-                    <input type="text" placeholder="Username" />
-                    <input type="password" placeholder="Password" />
-                    <div class = "col-md-6"><input type="submit" value="Sign In" class="btn btn-warning btn-sm" /></div>
-                    <div class = "col-md-6"><input type="submit" value="Sign Up" class="btn btn-info btn-sm" /></div>
+                <form class="login" method="get" action="/login">
+                <!--form class="login"-->  
+                    <input type="text" placeholder="Username" name="userName"/>
+                    <input type="password" placeholder="Password" name="passWord"/>
+                    <div class = "col-md-6"><input type="submit" value="Sign In" class="btn btn-warning btn-sm" id="signIn" /></div>
+                    <div class = "col-md-6"><input type="submit" value="Sign Up" class="btn btn-info btn-sm" id="signUp"/></div>
                 </form>
                 
                 </div>
@@ -237,5 +238,6 @@ form.login a:hover
     }); 
 });
 </script>
+<script src="js/loginPage.js"></script>
 </body>
 </html>

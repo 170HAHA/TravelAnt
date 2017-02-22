@@ -2,13 +2,15 @@
     {
         "userName": "Amy",
         "imgURL": "img/profile1.jpg",
-        "trips": [],
-        "friends": []
+        "_trips": [],
+        "passWord": "123456",
+        "_friends": []
     },
     {
         "userName": "Bob",
         "imgURL": "img/profile2.jpg",
-        "trips": [],
-        "friends": []
+        "_trips": [],
+        "passWord": "123456",
+        "_friends": []
     }
 ]

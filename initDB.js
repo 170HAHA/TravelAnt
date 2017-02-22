@@ -58,9 +58,13 @@ function createActivity(err) {
         
       to_save_count--;
       console.log(to_save_count + ' left to save to activity');
-      console.log(activity);
+//      console.log(activity);
       if(to_save_count <= 0) {
         console.log('DONE');
+        models.Activity.find(function(err, act){
+            console.log(act);
+        });
+
       }
     });
   }
@@ -85,23 +89,24 @@ function createTrip(err) {
 
   function addTrip(err, activities){
       var trips = [new models.Trip(trip_json[0]), new models.Trip(trip_json[1])];
-      trips[0].activityList.push(activities[0]._id);
-      trips[0].activityList.push(activities[1]._id);
-      trips[1].activityList.push(activities[2]._id);
-      trips[1].activityList.push(activities[3]._id);
+      trips[0]._activityList.push(activities[0]._id);
+      trips[0]._activityList.push(activities[1]._id);
+      trips[1]._activityList.push(activities[2]._id);
+      trips[1]._activityList.push(activities[3]._id);
       trips[0].save(saveTrip);
       trips[1].save(saveTrip);
 
       function saveTrip(err, trip) {
-          if(err) return console.err(err);
+          if(err) return console.error(err);
 
           to_save_count--;
           console.log(to_save_count + ' left to save trip');
-          console.log(trip);
+//          console.log(trip);
           if(to_save_count <= 0) {
             console.log('DONE');
-            // The script won't terminate until the 
-            // connection to the database is closed
+            models.Trip.find(function(err, trip){
+                console.log(trip);
+            });
           }
       }
       
@@ -125,7 +130,7 @@ function createUser(err) {
     models.Trip.find().exec(addUser);
     
     function addUser(err, res){
-        if (err) return console.err(err);
+        if (err) return console.error(err);
         
         var users = [];
         
@@ -133,14 +138,14 @@ function createUser(err) {
             var json = user_json[i];
             users.push(new models.User(json));
             for (var j = 0; j < res.length; j++){
-                users[i].trips.push(res[j]._id);
+                users[i]._trips.push(res[j]._id);
             }
         }
-        users[0].friends.push(users[1]._id);
-        users[1].friends.push(users[0]._id);
+        users[0]._friends.push(users[1]._id);
+        users[1]._friends.push(users[0]._id);
 
         for (var i = 0; i < users.length; i++){
-            console.log(users[i]);
+//            console.log(users[i]);
             users[i].save(function(err, user){
                 if(err) return console.error(err);
                 to_save_count--;
@@ -153,15 +158,23 @@ function createUser(err) {
         }
         
         function addTripToUser(){
-            models.Trip.findOneAndUpdate({tripName: "After-Graduation Trip"}, {$push: {participants: users[0]._id}});
-            models.Trip.findOneAndUpdate({tripName: "After-Graduation Trip"}, {$push: {participants: users[1]._id}});
-            models.Trip.findOneAndUpdate({tripName: "Spring-Break Trip"}, {$push: {participants: users[0]._id}});
-            models.Trip.findOneAndUpdate({tripName: "Spring-Break Trip"}, {$push: {participants: users[1]._id}});
-
-            models.User.find(function(err, user){
-                console.log(user);
-                mongoose.connection.close();
-            });
+            models.Trip.findOneAndUpdate({tripName: "After-Graduation Trip"}, {$push: {_participants: users[0]._id}}, function(err,r){
+                models.Trip.findOneAndUpdate({tripName: "After-Graduation Trip"}, {$push: {_participants: users[1]._id}}, function(err, r){
+                    models.Trip.findOneAndUpdate({tripName: "Spring-Break Trip"}, {$push: {_participants: users[0]._id}}, function(err, r){
+                        models.Trip.findOneAndUpdate({tripName: "Spring-Break Trip"}, {$push: {_participants: users[1]._id}}, function(err, r){
+                            models.User.find(function(err, user){
+                                console.log(user);
+                                models.Trip.find(function(err, trip){
+                                    console.log(trip);
+                                    
+                                    mongoose.connection.close();
+                                    
+                                });
+                            });
+                        });
+                    });
+                });    
+            });    
 
         }
     }
