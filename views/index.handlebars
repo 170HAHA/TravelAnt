@@ -20,8 +20,7 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg">
-                </img>
+                <img class="img-circle" src="img/profile3.jpg"/>
                 <div>
                     Daniel
                 </div>
@@ -64,10 +63,10 @@
                             <a href="#page-top"></a>
                         </li>
                         <li>
-                            <a href="/addTrip"><i class="fa fa-plane"></i>Add trip</a>
+                            <a href="/addTrip"><i class="fa fa-plane"></i> Add trip</a>
                         </li>
                         <li>
-                            <a href="/addFriend"><i class="fa fa-user"></i>Add friend</a>
+                            <a href="/addFriend"><i class="fa fa-user"></i> Add friend</a>
                         </li>
                     </ul>
                 </div>
@@ -82,13 +81,13 @@
                     <h1>My Trips</h1>
                     <div class="trip-list">
                         <ul>
-                            {{#each Routesdata}}
+                            {{#each finishedTrip}}
                             <div class="well well-lg">
                                 <div class="trip-content">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-7 trip-detail">
                                             <div class="trip-name"><h3>{{tripName}}</h3><h4>, {{tripLocation}}</h4><br/></div>
-                                            <div class="trip-date"><h4>{{tripStartDate}} - {{tripEndDate}}</h4></div>
+                                            <div class="trip-date"><h4>{{dateFormat tripStartDate 'll'}} - {{dateFormat tripEndDate 'll'}}</h4></div>
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress">
                                             <div class="progress">
@@ -96,14 +95,14 @@
                                                 </div>
                                             </div>
                                             <div class="trip-due">
-                                                <i>Due {{voteDue}}</i>
+                                                <i>Due {{dateFormat voteDue 'll'}}</i>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row trip-foot">
                                         <div class="col-xs-12 col-sm-7 trip-member">
-                                            {{#each participants}}
-                                            <img src={{imageUrl}} class="img-circle">
+                                            {{#each _participants}}
+                                            <img src={{imgURL}} class="img-circle"/>
                                             
                                             {{/each}}
                                             <a href="/index" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
@@ -119,32 +118,26 @@
                                 </div>
                             </div>
                             {{/each}}
-                            {{#each RoutesdataFinished}}
+                            {{#each unfinishedTrip}}
                             <div class="well well-lg">
                                 <div class="trip-content">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-7 trip-detail">
                                             <div class="trip-name"><h3>{{tripName}}</h3><h4>, {{tripLocation}}</h4><br/></div>
-                                            <div class="trip-date"><h4>{{tripStartDate}} - {{tripEndDate}}</h4></div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-5 trip-progress">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%; float:right;">
-                                                </div>
-                                            </div>
+                                            <div class="trip-date"><h4>{{dateFormat tripStartDate 'll'}} - {{dateFormat tripEndDate 'll'}}</h4></div>
                                         </div>
                                     </div>
                                     <div class="row trip-foot">
                                         <div class="col-xs-12 col-sm-7 trip-member">
-                                            {{#each participants}}
-                                            <img src={{imageUrl}} class="img-circle">
+                                            {{#each _participants}}
+                                            <img src={{imgURL}} class="img-circle"/>
                                             
                                             {{/each}}
                                             <a href="/index.html" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href=planfinished/{{tripID}} role="button" class="btn btn-warning trip-button trip-button-plan">
+                                                <a href=planfinished/{{tripID}} role="button" class="btn btn-warning trip-button trip-button-view">
                                                     View
                                                 </a>
                                             </div>
@@ -169,6 +162,7 @@
 
 
     <script src="js/jquery.js"></script>
+    <script src="js/tripPage.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

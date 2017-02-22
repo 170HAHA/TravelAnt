@@ -9,20 +9,18 @@ var TripSchema = new Mongoose.Schema({
 	"tripStartDate": Date,
     "tripEndDate": Date,
     "voteDue": Date,
-    "participants": [{type: Schema.Types.ObjectId, ref: 'User'}],
-    "activityList": [{type: Schema.Types.ObjectId, ref: 'Activity'}]
+    "_participants": [{type: Schema.Types.ObjectId, ref: 'User'}],
+    "_activityList": [{type: Schema.Types.ObjectId, ref: 'Activity'}]
 });
-
-exports.Trip = Mongoose.model('Trip', TripSchema);
 
 var UserSchema = new Mongoose.Schema({
     "userName": String,
+    "passWord": String,
     "imgURL": String,
-    "trips": [{type: Schema.Types.ObjectId, ref: 'Trip'}],
-    "friends": [{type: Schema.Types.ObjectId, ref: 'User'}]
+    "_trips": [{type: Schema.Types.ObjectId, ref: 'Trip'}],
+    "_friends": [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
-exports.User = Mongoose.model('User', UserSchema);
 
 var ActivitySchema = new Mongoose.Schema({
     "activityName": String,
@@ -31,4 +29,6 @@ var ActivitySchema = new Mongoose.Schema({
     "activityImg": String
 });
 
+exports.Trip = Mongoose.model('Trip', TripSchema);
+exports.User = Mongoose.model('User', UserSchema);
 exports.Activity = Mongoose.model('Activity', ActivitySchema);

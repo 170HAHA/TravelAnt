@@ -21,9 +21,13 @@ function addProject(result){
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	$('.project a').click(addProjectDetails);
-
-	$('#colorBtn').click(randomizeColors);
+	$("#signIn").click(function(e){
+        console.log("Sign in");
+        var json = {"userName": $('#userName').val(), "passWord": $('#passWord').val()};
+        $.post('/login', json, function(){
+            window.location.href = "/index";
+        })
+    })
 }
 
 /*
