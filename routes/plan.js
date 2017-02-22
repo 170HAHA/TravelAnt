@@ -4,6 +4,14 @@
 //var data = require("../data.json");
 
 exports.planInfo = function(req, res){
+    var tripID = req.param._id;
+    
+    models.Trip
+    .find({_id: tripID})
+    .populate('_activitiyList')
+    .exec(function(err, trip){
+        res.render('plan', trip[0]._activityList);
+    });
     /*
     var planID = req.params.tripID;
     var tgt
