@@ -2,6 +2,7 @@
 //var dataFinished = require("../dataFinished.json");
 var path = require('path');
 var models = require('../models');
+var myFriends = require("../myfriends.json");
 
 exports.view = function(req, res) {
     var userID = req.session.user._id;
@@ -16,10 +17,11 @@ exports.view = function(req, res) {
         var friends = [];
         for (var i = 0; i < user[0]._friends.length; ++i){
             console.log(user[0]._friends[i].userName);
-            friends.push(user[0]._friends[i].userName);
+            friends.push({"Name": user[0]._friends[i].userName});
         }
         console.log(friends);
-        res.render('addTrip', {"Friends": 'Amy'});
+        console.log(myFriends);
+        res.render('addTrip', {"myFriends": friends});
     });
     
     //res.render('addTrip', {});
@@ -29,6 +31,8 @@ exports.view = function(req, res) {
 
 exports.add = function(req, res) {  
     var curUserID = req.session.user._id;
+    
+    console.log("Added trip: " + req.query.tripName);
     
     var tripName = req.query.tripName;
     var location = req.query.destination;
@@ -55,13 +59,15 @@ exports.add = function(req, res) {
         }
         userIDs.push(curUserID);
         
+        console.log("Users: " + userIDs);
+        
         for (var i = 0; i < userIDs.length; ++i){
             newTrip._participants.push(userIDs[i]);
         }
         
-        console.log(newTrip);
+        console.log("New Trip: " + newTrip);
         
-        for (var i = 0; i < users.length; ++i){
+        for (var i = 0; i < userIDs.length; ++i){
             models.User.findOneAndUpdate({_id: userIDs[i]}, {$push: {_trips: newTrip._id}}, function(err,r){
                 if (err)    return res.send(500);
                 console.log(r);

@@ -97,6 +97,8 @@
                                     <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
                                     <a href="/index" role="button" class="btn btn-danger">Cancel</a>       
                                 </div>
+                                    
+                                
 
                                 </fieldset>
                             </form>
@@ -126,7 +128,7 @@
           el: '#add-friends',
           data: {
               selected: null,
-              options: {{friends}}//['Venice','Tomas','John','Amy']
+              options: [{{#each notMyFriends}}'{{Name}}',{{/each}}]
           }
         });
     </script>

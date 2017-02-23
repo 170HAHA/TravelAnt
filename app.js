@@ -93,6 +93,7 @@ app.get('/myfriends', myfriends.view);
 
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
+app.get('/vote', plan.voteUpdate);
 //app.get''
 //app.get('/project/:id', project.projectInfo);
 app.get('/addTrip', addTrip.view);

@@ -76,7 +76,7 @@
 
         <div class="container activity"><i class="fa fa-chevron-left"></i> 
             <div class="row">
-                {{#data}}
+                {{#trip}}
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <div class="back">
                         <a href="/index" role="button" class="btn"><i class="fa fa-chevron-left"></i> </a>
@@ -104,9 +104,10 @@
                         {{/each}}
                         <a href="#" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
                     </div>
-
+                {{/trip}}
+               
                     <div class="activity-list">
-                        {{#each _activityList}}
+                        {{#each activities}}
                         <ul>
                             <div class="well well-lg activity-item">
                                 <div class="row">
@@ -122,7 +123,7 @@
                                                 <i class="fa fa-quote-right"></i>
                                             </div>
                                             <div class="activity-vote" id={{_id}}>
-                                                <a href=""><i class="fa fa-arrow-up"></i></a>
+                                                <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i></a>
                                                 <span class="activity-vote-num">{{activityVotes}}</span>
                                             </div>
                                         </div>
@@ -135,7 +136,7 @@
                             <button type="button" class="btn btn-warning btn-lg btn-block">+</button>
                         </ul>
                 </div>
-                {{/data}}
+               
                 </div>
             </div>
         
@@ -149,6 +150,12 @@
     <script src="/js/bootstrap.min.js"></script>
 
     <script>
+    $(document).ready(function() {
+	   {{#each activities}}
+        console.log({{voted}});
+        {{/each}}
+    });
+        
     $(".fa-arrow-up").click(function(e){
         e.preventDefault();
         var votes = $(this).parent().next();
@@ -163,11 +170,13 @@
             $(this).addClass("disabled");
         } 
         
-        $.get("/vote", {activityID: this.closest('id')})
+        console.log($(this).closest('.activity-vote').attr('id'));
+        
+        $.get("/vote", {'activityID': $(this).closest('.activity-vote').attr('id'), 'voteNum': votes_num});
         
         votes.text(votes_num); 
       });
-//    $("#wrapper").toggleClass("toggled");
+
     $("#menu-button").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
