@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/travelant":{"mount_options":["dmode=775,fmode=0700"],"guestpath":"/home/vagrant/travelant","hostpath":"/Users/verazou/Document/UCSD/Wi17/170/Project_travelant","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/verazou/Document/UCSD/Wi17/170/Project_travelant","disabled":false,"__vagrantfile":true}}}
