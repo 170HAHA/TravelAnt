@@ -121,7 +121,7 @@
                                                 <h4>{{activityComments}}</h4>
                                                 <i class="fa fa-quote-right"></i>
                                             </div>
-                                            <div class="activity-vote">
+                                            <div class="activity-vote" id={{_id}}>
                                                 <a href=""><i class="fa fa-arrow-up"></i></a>
                                                 <span class="activity-vote-num">{{activityVotes}}</span>
                                             </div>
@@ -162,6 +162,9 @@
             votes_num = parseInt(votes_num) + 1;
             $(this).addClass("disabled");
         } 
+        
+        $.get("/vote", {activityID: this.closest('id')})
+        
         votes.text(votes_num); 
       });
 //    $("#wrapper").toggleClass("toggled");
