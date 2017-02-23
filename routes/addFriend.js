@@ -1,7 +1,8 @@
 var myFriends = require("../myfriends.json");
 
 exports.view = function(req, res) {   
-    res.render('addFriend', {});
+    var notMyFriends;
+    //res.render('addFriend', {'notMyFriends': notMyFriends});
 }
 
 exports.add = function(req, res) {  

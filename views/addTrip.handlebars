@@ -169,7 +169,7 @@
           el: '#invite-friends',
           data: {
               selected: null,
-              options: {{Friends}}
+              options: [{{#each myFriends}}'{{Name}}',{{/each}}]
           }
         });
     </script>

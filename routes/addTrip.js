@@ -2,6 +2,7 @@
 //var dataFinished = require("../dataFinished.json");
 var path = require('path');
 var models = require('../models');
+var myFriends = require("../myfriends.json");
 
 exports.view = function(req, res) {
     var userID = req.session.user._id;
@@ -19,7 +20,7 @@ exports.view = function(req, res) {
             friends.push(user[0]._friends[i].userName);
         }
         console.log(friends);
-        res.render('addTrip', {"Friends": 'Amy'});
+        res.render('addTrip', {"myFriends": myFriends});
     });
     
     //res.render('addTrip', {});
