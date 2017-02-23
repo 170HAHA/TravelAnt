@@ -49,7 +49,7 @@ form
     margin: 0 auto;
 }
 
-form.login input[type="text"], form.login input[type="password"]
+form.login input[type="text"], form.login input[type="password"], form.signup input[type="text"], form.signup input[type="password"], form.signup input[type="email"]
 {
     width: 100%;
     margin: 0;
@@ -67,8 +67,7 @@ form.login input[type="text"], form.login input[type="password"]
     outline: 0;
 }
 
-form.login input[type="submit"]
-{
+form.login input[type="submit"], form.signup input[type="submit"]{
     width: 100%;
     font-size: 14px;
     text-transform: uppercase;
@@ -79,36 +78,36 @@ form.login input[type="submit"]
     letter-spacing: 1px;
 }
 
-form.login input[type="submit"]:hover
+form.login input[type="submit"]:hover, form.signup input[type="submit"]:hover
 {
     transition: background-color 0.5s ease;
 }
 
-form.login .remember-forgot
+form.login form.signup .remember-forgot
 {
     float: left;
     width: 100%;
     margin: 10px 0 0 0;
 }
-form.login .forgot-pass-content
+form.login form.sugnup .forgot-pass-content
 {
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-form.login label, form.login a
+form.login label, form.login a, form.signup label, form.signup a
 {
     font-size: 12px;
     font-weight: 400;
     color: #FFFFFF;
 }
 
-form.login a
+form.login a, form.signup a
 {
     transition: color 0.5s ease;
 }
 
-form.login a:hover
+form.login a:hover, from.signup a:hover
 {
     color: #2ecc71;
 }
@@ -216,11 +215,32 @@ form.login a:hover
                 <!--form class="login"-->  
                     <input type="text" placeholder="Username" name="userName"/>
                     <input type="password" placeholder="Password" name="passWord"/>
-                    <div class = "col-md-6"><input type="submit" value="Sign In" class="btn btn-warning btn-sm" id="signIn" /></div>
-                    <div class = "col-md-6"><input type="submit" value="Sign Up" class="btn btn-info btn-sm" id="signUp"/></div>
+                    <div class = "col-md-6">
+                        <input type="submit" value="Sign In" class="btn btn-warning btn-sm" id="signIn" />
+                    </div>
+                    <div class = "col-md-6" id="toSignup">
+                        <a href = "#" >Create an account</a>
+                    </div>
                 </form>
-                
                 </div>
+                
+                
+                <div id = "signupbox" class = "hidden">
+                <form class="signup" method="get" action="/signup">
+                <!--form class="login"-->  
+                    <input type="text" placeholder="Username" name="userName"/>
+                    <input type="password" placeholder="Password" name="passWord"/>
+                    <div class = "col-md-6" id="toLogin">
+                        <a href = "#" >Have an account?</a>
+                    </div>
+                    
+                    <div class = "col-md-6">
+                        <input type="submit" value="Sign Up" class="btn btn-info btn-sm" id="signUp"/>
+                    </div>
+                </form>
+                </div>
+                
+                
             </div>
         </div>
     </div>
@@ -236,6 +256,14 @@ form.login a:hover
     $('.pass-reset-submit').click(function(event) {
       $(".pr-wrap").removeClass("show-pass-reset");
     }); 
+});
+$('#toSignup').click(function(event){
+    $('#loginbox').addClass("hidden");
+    $('#signupbox').removeClass("hidden");
+});
+$('#toLogin').click(function(event){
+    $('#loginbox').removeClass("hidden");
+    $('#signupbox').addClass("hidden");
 });
 </script>
 <script src="js/loginPage.js"></script>
