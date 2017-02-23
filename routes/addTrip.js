@@ -38,7 +38,7 @@ exports.add = function(req, res) {
     var location = req.query.destination;
     var startDate = req.query.startDate;
     var endDate = req.query.endDate;
-    var selectedFriends = req.query.selectedFriends.split(",");
+    var selectedFriends = req.query.selectedFriends.split(","); 
     var dueDate = req.query.dueDate;
     
     if (dueDate == ""){
