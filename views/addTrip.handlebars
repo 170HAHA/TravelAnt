@@ -35,7 +35,7 @@
             <li>
                 <a href="/myfriends">My Friends</a>
             </li>
-            <li>
+            <li class = "hidden">
                 <a href="/settings">Settings</a>
             </li>
             <li class = "hidden">
@@ -136,6 +136,11 @@
                                     <div class="col-md-4">
                                     <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
                                     <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
+                                    <p>[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
+                                    {{#if myFriends}}
+                                    {{else}}
+                                        <p>Add a friend first.</p>
+                                    {{/if}}
                                     </div>
                                 </div>
 
@@ -173,7 +178,7 @@
           el: '#invite-friends',
           data: {
               selected: null,
-              options: [{{#each myFriends}}'{{Name}}'{{/each}}]
+              options: [{{#each myFriends}}'{{Name}}',{{/each}}]
           }
         });
     </script>
