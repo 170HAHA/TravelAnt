@@ -55,6 +55,11 @@ exports.userSignUp = function(req, res){
        }
     });
     
-    
-    
+};
+
+
+exports.userLogOut = function(req, res){
+    console.log("Log Out");
+    req.session.user = null;
+    res.redirect("/");
 };

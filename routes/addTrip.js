@@ -227,6 +227,8 @@ exports.edit = function(req, res){
             if (trip.length > 0){
                 lastParticipants = trip[0]._participants;
             }
+            
+            console.log("Last participants: " + lastParticipants);
 
             models.User.find({userName: {$in: selectedFriends}}, function(err, users){
                 var participantIDs = [];
@@ -234,18 +236,19 @@ exports.edit = function(req, res){
                     participantIDs.push(users[i]._id);
                 }
 
-                console.log("Edited participants: " + participantIDs);
                 console.log("UserID: " + userID);
                 participantIDs.push(userID);
 
                 console.log("Edited participants: " + participantIDs);
 
                 var newParticipants = [];
-                for (var i = 0; i < participantIDs.lengt; ++i){
-                    if (lastParticipants.indexOf(participantIDs[i]) != -1){
+                for (var i = 0; i < participantIDs.length; ++i){
+                    if (lastParticipants.indexOf(participantIDs[i]) == -1){
                         newParticipants.push(participantIDs[i]);
                     }
                 }
+                
+                console.log("New Participants: " + newParticipants);
 
                 models.Trip
                 .findOneAndUpdate({_id: tripID}, {$set: {tripName: tripName, tripLocation: location, tripStartDate: startDate, tripEndDate: endDate, _participants: participantIDs}}, function(err,  r){

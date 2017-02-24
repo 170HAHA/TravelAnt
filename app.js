@@ -90,23 +90,36 @@ function authentication(req, res, next) {
 app.get('/', login.view);
 app.get('/login', login.userLogIn);
 app.get('/signup', login.userSignUp);
-//app.get('/index', authentication);
+app.get('/logOut', login.userLogOut);
+app.get('/index', authentication);
 app.get('/index', index.view);
+app.get('/myfriends', authentication);
 app.get('/myfriends', myfriends.view);
 
+app.get('/plan/:tripID', authentication);
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
+app.get('/vote', authentication);
 app.get('/vote', plan.voteUpdate);
 //app.get''
 //app.get('/project/:id', project.projectInfo);
+app.get('/addTrip', authentication);
 app.get('/addTrip', addTrip.view);
+app.get('/addT', authentication);
 app.get('/addT', addTrip.add);
+app.get('/addFriend', authentication);
 app.get('/addFriend', addFriend.view);
+app.get('/addF', authentication);
 app.get('/addF', addFriend.add);
+app.get('/editTrip', authentication);
 app.get('/editTrip/:tripID', addTrip.editview);
+app.get('/editT/:tripID', authentication);
 app.get('/editT/:tripID', addTrip.edit);
+app.get('/settings', authentication);
 app.get('/settings',settings.view);
+app.get('/uploadImg', authentication);
 app.post('/uploadImg',settings.uploadImg);
+
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);
