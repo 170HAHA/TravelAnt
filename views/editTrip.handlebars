@@ -135,8 +135,10 @@
                                 <div id="invite-friends" class="form-group">
                                     <label class="col-md-4 control-label" for="enddate">Invite Friends</label> 
                                     <div class="col-md-4">
-                                    <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
-                                    <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
+                                        <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
+                                        <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
+                                        <p class= "hidden">[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
+                                        <p class= "hidden">Add a friend first.</p>
                                     </div>
                                 </div>
                                 <!-- Button (Double) -->
@@ -197,8 +199,8 @@
           el: '.editform',
           data: {
               leave: false,
-              selected: [{{#each myFriends}}'{{Name}}'{{/each}}],
-              options: [{{#each myFriends}}'{{Name}}'{{/each}}]
+              selected: [{{#each participants}}'{{Name}}',{{/each}}],
+              options: [{{#each myFriends}}'{{Name}}',{{/each}}]
           }
         });
         
