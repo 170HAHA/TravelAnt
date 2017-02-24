@@ -181,7 +181,7 @@
                                       <label for="activity">Activity:</label>
                                       <input type="text" class="form-control" id="term" placeholder="Activity" name="term">
                                     </div>
-                                    <input type="hidden"  name="tripID" value={{data._id}}></input>
+                                    <input type="hidden"  name="tripID" value={{trip._id}}></input>
                                     <button id="searchforyelp" type="button" class="btn btn-default">Search</button>
                                 </form>
                         
@@ -270,7 +270,7 @@
                     var activityImg = res["businesses"][id]["image_url"];
                     var activityName = res["businesses"][id]["name"];
                     var yelpUrl = res["businesses"][id]["url"];
-                    var tripID = "{{data._id}}";
+                    var tripID = "{{trip._id}}";
                     var activityComments = res["businesses"][id]["snippet_text"];
 
                     console.log("debug",tripID);

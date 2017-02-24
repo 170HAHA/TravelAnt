@@ -25,7 +25,7 @@ exports.add = function(req, res){
     console.log("newActivity"+newActivity);
     
     newActivity.save(function(err){
-    		
+    		console.log("aaaaa"+tripID);
 	        var to = '/plan/'+tripID;
 	        res.redirect(to);
     
