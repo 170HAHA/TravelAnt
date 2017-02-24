@@ -21,7 +21,7 @@ exports.view = function(req, res) {
         }
         console.log(friends);
         console.log(myFriends);
-        res.render('addTrip', {"myFriends": friends});
+        res.render('addTrip', {"myFriends": friends, user: {userName: user[0].userName, userImg: user[0].imgURL}});
     });
     
     //res.render('addTrip', {});
@@ -94,4 +94,189 @@ exports.add = function(req, res) {
 	//data.push(newTrip);
 	//console.log(data);
     //res.render('index', {'Routesdata': data, 'RoutesdataFinished': dataFinished});
-}
+};
+
+
+exports.editview = function(req, res){
+    /*
+    var userID = req.session.user._id;
+    console.log("userID" + userID);
+    
+    models.User
+    .find({_id: userID})
+    .populate('_friends')
+    .exec(function(err, user){
+        console.log(user[0]);
+        
+        var friends = [];
+        for (var i = 0; i < user[0]._friends.length; ++i){
+            console.log(user[0]._friends[i].userName);
+            friends.push({"Name": user[0]._friends[i].userName});
+        }
+        console.log(friends);
+        console.log(myFriends);
+        res.render('editTrip', {"myFriends": friends});
+    });
+    */
+    
+    var userID = req.session.user._id;
+    var tripID = req.params.tripID;
+    
+    models.Trip
+    .find({_id: tripID})
+    .populate("_participants")
+    .exec(function(err, trip){
+        if (err)    return res.send(500);
+        if (trip.length == 0)   res.redirect('/index');
+        console.log("Current trip: " + trip[0]);
+        var participants = [];
+        for (var i = 0; i < trip[0]._participants.length; ++i){
+            if (trip[0]._participants[i]._id != userID){
+                participants.push({"Name": trip[0]._participants[i].userName});
+            }
+        }
+        
+        models.User
+        .find({_id: userID})
+        .populate('_friends')
+        .exec(function(err, user){
+            console.log(user[0]);
+
+            var friends = [];
+            for (var i = 0; i < user[0]._friends.length; ++i){
+                console.log(user[0]._friends[i].userName);
+                friends.push({"Name": user[0]._friends[i].userName});
+            }
+            console.log(participants);
+            res.render('editTrip', {"myFriends": friends, trip: trip[0], participants: participants, user: {userName: user[0].userName, userImg: user[0].imgURL}});
+        });
+
+    });
+    
+};
+
+
+exports.edit = function(req, res){
+    var userID = req.session.user._id;
+    var tripID = req.params.tripID;
+    
+    var leaveTrip = req.query.leaveTrip;
+    
+    console.log("Leave Trip: ", leaveTrip);
+    
+    if (leaveTrip == 'true'){
+        console.log("Leave Trip!!!!!");
+        models.Trip
+        .find({_id: tripID})
+        .exec(function(err, trip){
+            
+            var participants = trip[0]._participants;
+            var index = participants.indexOf(userID);
+            
+            if (index == -1){
+                res.redirect('index');
+                return;
+            }
+            participants.splice(index, 1);
+            
+            models.Trip
+            .findOneAndUpdate({_id: tripID}, {$set: {_participants: participants}}, function(err, t){
+                if (err)    return res.send(500);
+                
+                models.User
+                .find({_id: userID})
+                .exec(function(err, usr){
+                    
+                    var trips = usr[0]._trips;
+                    var index = trips.indexOf(tripID);
+                    
+                    if (index == -1){
+                        res.redirect('index');
+                        return;
+                    }
+                    trips.splice(index, 1);
+                    
+                    models.User
+                    .findOneAndUpdate({_id: userID}, {$set: {_trips: trips}}, function(err, r){
+                        if (err)    return res.send(500);
+                        
+                        res.redirect("/index");
+                        return;
+                    });
+                    
+                    
+                });
+                
+            });
+            
+        });
+    }
+    
+    else{
+        var tripName = req.query.tripName;
+        var location = req.query.destination;
+        var startDate = req.query.startDate;
+        var endDate = req.query.endDate;
+        var selectedFriends = req.query.selectedFriends.split(","); 
+        var dueDate = req.query.dueDate;
+
+        models.Trip
+        .find({_id: tripID})
+        .exec(function(err, trip){
+            var lastParticipants = [];
+            if (trip.length > 0){
+                lastParticipants = trip[0]._participants;
+            }
+
+            models.User.find({userName: {$in: selectedFriends}}, function(err, users){
+                var participantIDs = [];
+                for (var i = 0; i < users.length; ++i){
+                    participantIDs.push(users[i]._id);
+                }
+
+                console.log("Edited participants: " + participantIDs);
+                console.log("UserID: " + userID);
+                participantIDs.push(userID);
+
+                console.log("Edited participants: " + participantIDs);
+
+                var newParticipants = [];
+                for (var i = 0; i < participantIDs.lengt; ++i){
+                    if (lastParticipants.indexOf(participantIDs[i]) != -1){
+                        newParticipants.push(participantIDs[i]);
+                    }
+                }
+
+                models.Trip
+                .findOneAndUpdate({_id: tripID}, {$set: {tripName: tripName, tripLocation: location, tripStartDate: startDate, tripEndDate: endDate, _participants: participantIDs}}, function(err,  r){
+                    if (err)    return res.send(500);
+
+                    console.log("Edited trip: " + r);
+
+                    var updated = newParticipants.length;
+                    if (updated == 0) res.redirect("/index");
+
+                    for (var i = 0; i < newParticipants.length; ++i){
+                        models.User.findOneAndUpdate({_id: newParticipants[i]}, {$push: {_trips: tripID}}, function(err, newp){
+                            if (err)    return res.send(500);
+                            console.log(newp);
+                            updated--;
+                            if (updated == 0){
+                                res.redirect("/index");
+                            }
+                        });
+                    }
+
+
+
+                });
+
+            });
+
+
+        });
+    
+    }
+    
+    
+};

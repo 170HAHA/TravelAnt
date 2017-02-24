@@ -87,6 +87,7 @@ function authentication(req, res, next) {
 // Add routes here
 app.get('/', login.view);
 app.get('/login', login.userLogIn);
+app.get('/signup', login.userSignUp);
 //app.get('/index', authentication);
 app.get('/index', index.view);
 app.get('/myfriends', myfriends.view);
@@ -100,6 +101,8 @@ app.get('/addTrip', addTrip.view);
 app.get('/addT', addTrip.add);
 app.get('/addFriend', addFriend.view);
 app.get('/addF', addFriend.add);
+app.get('/editTrip/:tripID', addTrip.editview);
+app.get('/editT/:tripID', addTrip.edit);
 app.get('/settings',settings.view);
 app.get('/submitSettings',settings.submitStgs);
 // Example route

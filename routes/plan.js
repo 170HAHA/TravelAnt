@@ -10,17 +10,6 @@ exports.planInfo = function(req, res){
     
     console.log("tripID: " + tripID);
     
-    /*
-    models.Trip
-    .find({_id: tripID})
-    .exec(function(err, trip){
-        if (err)    return res.send(500);
-        
-        models.
-        
-    })
-    */
-    
     models.User
     .find({_id: userID})
     .exec(function(err, user){
@@ -31,6 +20,14 @@ exports.planInfo = function(req, res){
         .populate('_activityList _participants')
         .exec(function(err, trip){
             console.log("Plan: " + trip[0]);
+            
+            var nowTime = new Date();
+            var unfinished = true;
+            if (trip[0].voteDue < nowTime){
+                unfinished = false;
+            }
+            
+            trip[0].unfinished = unfinished;
 
             var activityList = trip[0]._activityList;
 
@@ -50,7 +47,7 @@ exports.planInfo = function(req, res){
 
             activityList.sort(compare);
 
-            res.render('plan', {trip: trip[0], activities: activityList});
+            res.render('plan', {trip: trip[0], activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
         });
         
     });

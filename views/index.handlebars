@@ -20,10 +20,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg"/>
+                {{#user}}
+                <img class="img-circle" src="{{userImg}}"/>
                 <div>
-                    Daniel
+                    {{userName}}
                 </div>
+                {{/user}}
             </li>
             <li>
                 <a href="/index">Home</a>
@@ -137,7 +139,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href=planfinished/{{_id}} role="button" class="btn btn-warning trip-button trip-button-view">
+                                                <a href=plan/{{_id}} role="button" class="btn btn-warning trip-button trip-button-view">
                                                     View
                                                 </a>
                                             </div>

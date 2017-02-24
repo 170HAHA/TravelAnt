@@ -20,11 +20,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg">
-                </img>
+                {{#user}}
+                <img class="img-circle" src="{{userImg}}"/>
                 <div>
-                    Daniel
+                    {{userName}}
                 </div>
+                {{/user}}
             </li>
             <li>
                 <a href="/index">Home</a>

@@ -38,9 +38,7 @@ exports.view = function(req, res){
                 models.Trip.populate(usr2[0]._trips, {path: '_participants'}, function(err, trip2){
                     console.log("unfinished trips:" + trip2);
                     var unfinished_trip = trip2;
-                    console.log(unfinished_trip[0].voteDue.toDateString());
-                    console.log(finished_trip[0].voteDue.toDateString());
-                    res.render('index', {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip});
+                    res.render('index', {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip, 'user': {userName: usr[0].userName, userImg: usr[0].imgURL}});
                 });
                 
             });                                                                   
