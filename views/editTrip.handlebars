@@ -83,12 +83,12 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>Edit trip</h1>
-                    {{#trip}}
+                    
                         <div class = "well well-lg well-form editform" id={{_id}}>
                             
                             <form class="form-horizontal" method="get" action=/editT/{{_id}}>
                                 <fieldset>
-
+                                {{#trip}}
                                 <!-- TripName Text input-->
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="textinput">TripName</label>  
@@ -131,6 +131,7 @@
                                   <p class="help-block hint">Default Due Date is the same with Start Date.</p>
                                   </div>
                                 </div>
+                                {{/trip}}
                                 <!-- Invite Friends-->
                                 <div id="invite-friends" class="form-group">
                                     <label class="col-md-4 control-label" for="enddate">Invite Friends</label> 
@@ -156,7 +157,7 @@
                                     <a href="/index" role="button" class="btn btn-danger">Cancel</a>  
                                     </div>
                                 </div>
-                                    {{/trip}}
+                                    
                                 </fieldset>
                             </form>
                             <button id="Leave" class="btn btn-warning" style="text-align:center">Leave this trip</button>
