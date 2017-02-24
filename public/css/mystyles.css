@@ -347,6 +347,7 @@ ul{
 
 .activity-vote > a{
     color: #FF8800;
+    text-decoration: none;
 }
 
 h1 > a{
