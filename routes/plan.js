@@ -10,6 +10,14 @@ exports.planInfo = function(req, res){
     
     console.log("tripID: " + tripID);
     
+// <<<<<<< HEAD
+//     models.Trip
+//     .find({_id: tripID})
+//     .populate('_activityList _participants')
+//     .exec(function(err, trip){
+        
+//         res.render('plan', {data: trip[0]});
+// =======
     models.User
     .find({_id: userID})
     .exec(function(err, user){

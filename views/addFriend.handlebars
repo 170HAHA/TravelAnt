@@ -94,7 +94,10 @@
                                     <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
                                     <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
                                     <p class = "hidden">[{{#each notMyFriends}}'{{userName}}',{{/each}}]</p> 
-                                    <p class = "hidden">You have already added all of the users.</p>  
+                                    {{#if notMyFriends}}
+                                    {{else}}
+                                        <p class="help-block hint">You have already added all of the users.</p>  
+                                    {{/if}}
                                 </div>
 
                                 <!-- Button (Double) -->

@@ -390,6 +390,9 @@ h1 > a{
 .v-select {
    background: white;!important 
 }
+.maxsize {
+    width:50%;
+}
 
 
 

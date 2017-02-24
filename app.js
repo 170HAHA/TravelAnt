@@ -13,7 +13,6 @@ var moment = require('moment');
 
 var index = require('./routes/index');
 var project = require('./routes/project');
-var palette = require('./routes/palette');
 var myfriends = require('./routes/friends');
 
 var plan = require('./routes/plan');
@@ -21,10 +20,14 @@ var planfinished = require('./routes/planfinished');
 //var plan = require('./routes/plan');
 var addTrip = require('./routes/addTrip');
 var login = require('./routes/login');
+
 var addFriend = require('./routes/addFriend');
 var settings = require('./routes/settings');
+var searchYelp = require('./routes/searchYelp');
+var addtoDB = require('./routes/addtoDB');
 // Example route
 // var user = require('./routes/user');
+
 var app = express();
 
 // Connect to the Mongo database, whether locally or on Heroku
@@ -99,6 +102,7 @@ app.get('/myfriends', myfriends.view);
 app.get('/plan/:tripID', authentication);
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
+
 app.get('/vote', authentication);
 app.get('/vote', plan.voteUpdate);
 //app.get''
@@ -106,6 +110,16 @@ app.get('/vote', plan.voteUpdate);
 app.get('/addTrip', authentication);
 app.get('/addTrip', addTrip.view);
 app.get('/addT', authentication);
+
+
+/*
+app.get('/vote', plan.voteUpdate);
+
+app.get('/addTrip', addTrip.view);
+
+app.get('/addT', addTrip.add);
+*/
+
 app.get('/addT', addTrip.add);
 app.get('/addFriend', authentication);
 app.get('/addFriend', addFriend.view);
@@ -117,12 +131,20 @@ app.get('/editT/:tripID', authentication);
 app.get('/editT/:tripID', addTrip.edit);
 app.get('/settings', authentication);
 app.get('/settings',settings.view);
+
 app.get('/uploadImg', authentication);
 app.post('/uploadImg',settings.uploadImg);
+
+//app.get('/submitSettings',settings.submitStgs);
+app.post('/searchYelp', searchYelp.search);
+app.post('/addtoDB',addtoDB.add);
+
+
 
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

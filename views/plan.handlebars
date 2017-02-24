@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TravelAnt</title>
+    
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="/css/mystyles.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/bootstrap-social.css" rel="stylesheet">
     <link href="/css/simple-sidebar.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -112,42 +114,45 @@
                
                     <div class="activity-list">
                         {{#if activities}}
-                        {{#each activities}}
-                        <ul>
-                            <div class="well well-lg activity-item">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="{{activityImg}}" class="img-rounded activity-img"></img>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-9">
-                                        <div class="activity-content">
-                                            <h3>{{activityName}}</h3></br>
-                                            <div class="activity-comment">
-                                                <i class="fa fa-quote-left"></i>
-                                                <h4>{{activityComments}}</h4>
-                                                <i class="fa fa-quote-right"></i>
-                                            </div>
-                                            <div class="activity-vote" id={{_id}}>
-                                                <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i></a>
-                                                <span class="activity-vote-num">{{activityVotes}}</span>
+                            {{#each activities}}
+                            <ul>
+                                <div class="well well-lg activity-item">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+
+                                            <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="activity-content">
+                                                <h3>{{activityName}}</h3></br>
+                                                <div class="activity-comment">
+                                                    <i class="fa fa-quote-left"></i>
+                                                    <h4>{{activityComments}}</h4>
+                                                    <i class="fa fa-quote-right"></i>
+                                                </div>
+                                                <div class="activity-vote" id={{_id}}>
+                                                    {{#if unfinished}}
+                                                        <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i> </a>
+                                                    {{/if}}
+                                                    <span class="activity-vote-num">{{activityVotes}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ul>
-                        {{/each}}
-                
+                            </ul>
+                            {{/each}}
                         {{else}}
-                        {{#if unfinished}}
-                        <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
-                        {{/if}}
+                            {{#if unfinished}}
+                                <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
+                            {{/if}}
                         {{/if}}
                 
                         {{#trip}}
                         {{#if unfinished}}
                         <ul>         
-                            <button type="button" class="btn btn-warning btn-addtrip"> Add an activity</button>
+                            <button type="button" class="btn btn-warning btn-addtrip" data-toggle="modal" data-target="#myModal"> Add an activity</button>
                         </ul>
                         {{/if}}
                         {{/trip}}
@@ -156,16 +161,50 @@
                
                 </div>
             </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Add Activity</h4>
+                              </div>
+                              <div class="modal-body">
+                                <form id="addActivity" role="form" >
+                            
+                                    <div class="form-group">
+                                      <label for="city">City:</label>
+                                      <input type="text" class="form-control" id="location" placeholder="City" name="location">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="activity">Activity:</label>
+                                      <input type="text" class="form-control" id="term" placeholder="Activity" name="term">
+                                    </div>
+                                    <input type="hidden"  name="tripID" value={{trip._id}}></input>
+                                    <button id="searchforyelp" type="button" class="btn btn-default">Search</button>
+                                </form>
+                        
+                                <div class = "showresult"></div>
+                            </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+
+                          </div>
+            </div>
         
         </div>
-    </div>
 </div>
-        
+
+    
     <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
 
+   
     <script>
     $(document).ready(function() {
 	   {{#each activities}}
@@ -199,4 +238,62 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+
+    <script>
+    $("#searchforyelp").click(function(e){
+        e.preventDefault();
+
+        var location = $('#addActivity #location').val();
+        var term = $('#addActivity #term').val();
+        
+        var json = {
+            'location': location,
+            'term': term
+        };
+        $.post('/searchYelp', json, function(res) {
+        
+            var new_html = '';
+            for(var i = 0; i < Math.min(10,res["businesses"].length); ++i) {
+                var idd = "plus"+i;
+                new_html = new_html +' <div align = "middle" ><a href='
+                +res["businesses"][i]["url"]+' target="_blank"><img align = "middle" class="img-rounded" src="'+res["businesses"][i]["image_url"]+'" style = "width:40%;" ></a><button id="'+idd+'"' +' type="button" class="btn btn-default addAct">+</button>'+ '<a href='+res["businesses"][i]["url"]
+                +' target="_blank"><h5 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">'
+                +res["businesses"][i]["name"]+'</h5></a></div>';
+            }
+            console.log("Searched...");
+            var details_div = $('.showresult');
+            details_div.html(new_html);
+            //for(var j = 0; j < 10; ++j) {
+                $(".addAct").click(function(e){
+                    e.preventDefault();
+                    var id = parseInt($(this).attr("id").substring(4));
+                    var activityImg = res["businesses"][id]["image_url"];
+                    var activityName = res["businesses"][id]["name"];
+                    var yelpUrl = res["businesses"][id]["url"];
+                    var tripID = "{{trip._id}}";
+                    var activityComments = res["businesses"][id]["snippet_text"];
+
+                    console.log("debug",tripID);
+                
+                    var jsonadd = {
+                        'activityImg': activityImg,
+                        'activityName': activityName,
+                        'yelpUrl': yelpUrl,
+                        'tripID': tripID,
+                        'activityComments':activityComments
+                    };
+
+
+                    $.post('/addtoDB', jsonadd, function() {
+                        var to = '/plan/'+tripID;
+                        console.log("debug",tripID);
+                        window.location.href = to;
+                    });
+                });
+            //}
+        });
+    });
+
+    </script>
+
 </body>
