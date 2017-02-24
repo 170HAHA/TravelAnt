@@ -93,8 +93,8 @@
                                 </div>
 
                                 <!-- Button (Double) -->
-                                <div class="form-group text-center">                    
-                                    <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
+                                <div class="form-group text-center">  
+                                    <button type="submit" class="btn btn-primary">Add</button>
                                     <a href="/index" role="button" class="btn btn-danger">Cancel</a>       
                                 </div>
                                     
@@ -128,7 +128,7 @@
           el: '#add-friends',
           data: {
               selected: null,
-              options: [{{#each notMyFriends}}'{{Name}}',{{/each}}]
+              options: [{{#each notMyFriends}}'{{userName}}',{{/each}}]
           }
         });
     </script>

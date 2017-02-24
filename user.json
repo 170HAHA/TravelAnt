@@ -14,5 +14,21 @@
         "passWord": "123456",
         "_friends": [],
         "voted": []
+    },
+    {
+        "userName": "Tom",
+        "imgURL": "img/profile3.jpg",
+        "_trips": [],
+        "passWord": "123456",
+        "_friends": [],
+        "voted": []
+    },
+    {
+        "userName": "Jimmy",
+        "imgURL": "img/profile4.jpg",
+        "_trips": [],
+        "passWord": "123456",
+        "_friends": [],
+        "voted": []
     }
 ]

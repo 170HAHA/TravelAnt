@@ -7,19 +7,15 @@ var models = require("../models");
 exports.view = function(req, res){
 
     var userID = req.session.user._id;
-    console.log("USer Id: ", userID);
+    //console.log("USer Id: ", userID);
     
-    var nowTime = new Date();
-    
-    
-    models.User
-    .find({_id: userID})
+    models.User.find({_id: userID})
     .populate({
         path: '_friends'
     })
     .exec(function(err, usr){
         if (err) return res.send(500);
-        console.log(usr[0]._friends);
+        //console.log(usr[0]._friends);
         res.render('myfriends', {'Friends':usr[0]._friends});
-        });
+    });
 };
