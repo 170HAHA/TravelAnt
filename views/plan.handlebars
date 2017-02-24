@@ -22,10 +22,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="/img/profile3.jpg"/>
+                {{#user}}
+                <img class="img-circle" src="{{userImg}}"/>
                 <div>
-                    Daniel
+                    {{userName}}
                 </div>
+                {{/user}}
             </li>
 
             <li>
@@ -78,18 +80,19 @@
 
         <div class="container activity"><i class="fa fa-chevron-left"></i> 
             <div class="row">
-                {{#data}}
+                {{#trip}}
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <div class="back">
                         <a href="/index" role="button" class="btn"><i class="fa fa-chevron-left"></i> </a>
                     </div>
                     <br>
-                    <h1>{{tripName}} <a href="edittrip.html"><i class="fa fa-edit"></i></a></h1>
+                    <h1>{{tripName}} {{#if unfinished}}<a href=/editTrip/{{_id}}><i class="fa fa-edit"></i></a>{{/if}}</h1>
                     <div class="row trip-detail-progress">
                         <div class="col-xs-12 col-sm-7 trip-detail">
                             <div class="trip-name"><h4>{{tripLocation}}</h4><br/></div>
                             <div class="trip-date"><h4>{{dateFormat tripStartDate 'll'}} - {{dateFormat tripEndDate 'll'}}</h4></div>
                         </div>
+                        {{#if unfinished}}
                         <div class="col-xs-12 col-sm-5 trip-progress">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; float:right;">
@@ -99,22 +102,26 @@
                                 <i>Due {{dateFormat voteDue 'll'}}</i>
                             </div>
                         </div>
+                        {{/if}}
                     </div>
                     <div class="trip-member">
                         {{#each _participants}}
-                        <img src="/{{imgURL}}" class="img-circle">
+                        <img src="{{imgURL}}" class="img-circle">
                         {{/each}}
                         <a href="#" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
                     </div>
-
+                {{/trip}}
+               
                     <div class="activity-list">
-                        {{#each _activityList}}
+                        {{#if activities}}
+                        {{#each activities}}
                         <ul>
                             <div class="well well-lg activity-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="{{activityImg}}"
-                                         class="img-rounded activity-img"></img>
+
+                                        <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+
                                     </div>
                                     <div class="col-xs-12 col-sm-9">
                                         <div class="activity-content">
@@ -124,8 +131,8 @@
                                                 <h4>{{activityComments}}</h4>
                                                 <i class="fa fa-quote-right"></i>
                                             </div>
-                                            <div class="activity-vote">
-                                                <a href=""><i class="fa fa-arrow-up"></i></a>
+                                            <div class="activity-vote" id={{_id}}>
+                                                <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i></a>
                                                 <span class="activity-vote-num">{{activityVotes}}</span>
                                             </div>
                                         </div>
@@ -134,13 +141,27 @@
                             </div>
                         </ul>
                         {{/each}}
-                    </div>
-                        <ul>         
-                            <button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#myModal">+</button>
-                        </ul>
+
+                        
                 
+
+                
+                        {{else}}
+                        {{#if unfinished}}
+                        <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
+                        {{/if}}
+                        {{/if}}
+                
+                        {{#trip}}
+                        {{#if unfinished}}
+                        <ul>         
+                            <button type="button" class="btn btn-warning btn-addtrip" data-toggle="modal" data-target="#myModal"> Add an activity</button>
+                        </ul>
+                        {{/if}}
+                        {{/trip}}
+                        
                 </div>
-                {{/data}}
+               
                 </div>
             </div>
             <div id="myModal" class="modal fade" role="dialog">
@@ -188,6 +209,12 @@
 
    
     <script>
+    $(document).ready(function() {
+	   {{#each activities}}
+        console.log({{voted}});
+        {{/each}}
+    });
+        
     $(".fa-arrow-up").click(function(e){
         e.preventDefault();
         var votes = $(this).parent().next();
@@ -201,9 +228,14 @@
             votes_num = parseInt(votes_num) + 1;
             $(this).addClass("disabled");
         } 
+        
+        console.log($(this).closest('.activity-vote').attr('id'));
+        
+        $.get("/vote", {'activityID': $(this).closest('.activity-vote').attr('id'), 'voteNum': votes_num});
+        
         votes.text(votes_num); 
       });
-    $("#wrapper").toggleClass("toggled");
+
     $("#menu-button").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

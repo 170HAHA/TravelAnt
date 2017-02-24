@@ -33,8 +33,8 @@ var app = express();
 // Connect to the Mongo database, whether locally or on Heroku
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
 var local_database_name = 'travelant';
-var local_database_uri  = 'mongodb://localhost/' + local_database_name
-var database_uri = process.env.MONGOLAB_URI || local_database_uri
+var local_database_uri  = 'mongodb://localhost/' + local_database_name;
+var database_uri = process.env.MONGODB_URI || local_database_uri;
 mongoose.connect(database_uri);
 
 
@@ -55,6 +55,8 @@ app.engine('handlebars', hbsEngine.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.favicon());
+app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -90,12 +92,15 @@ function authentication(req, res, next) {
 // Add routes here
 app.get('/', login.view);
 app.get('/login', login.userLogIn);
+app.get('/signup', login.userSignUp);
 //app.get('/index', authentication);
 app.get('/index', index.view);
 app.get('/myfriends', myfriends.view);
 
 app.get('/plan/:tripID', plan.planInfo);
 app.get('/planfinished/:tripID', planfinished.planInfo);
+
+app.get('/vote', plan.voteUpdate);
 
 app.get('/addTrip', addTrip.view);
 
@@ -105,10 +110,16 @@ app.get('/addT', addTrip.add);
 app.get('/addT', addTrip.add);
 app.get('/addFriend', addFriend.view);
 app.get('/addF', addFriend.add);
+app.get('/editTrip/:tripID', addTrip.editview);
+app.get('/editT/:tripID', addTrip.edit);
 app.get('/settings',settings.view);
+
 app.get('/submitSettings',settings.submitStgs);
 app.post('/searchYelp', searchYelp.search);
 app.post('/addtoDB',addtoDB.add);
+
+app.post('/uploadImg',settings.uploadImg);
+
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);

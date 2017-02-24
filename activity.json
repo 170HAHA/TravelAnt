@@ -3,24 +3,24 @@
         "activityName": "Sea World",
         "activityComments": "Love animals!",
         "activityVotes": 2,
-        "activityImg": "img/seaworld.jpg"
+        "activityImg": "/img/seaworld.jpg"
     },
     {
         "activityName": "Balboa Park",
         "activityComments": "Amazing architecture!",
         "activityVotes": 1,
-        "activityImg": "img/balboapark.jpg"
+        "activityImg": "/img/balboapark.jpg"
     },
     {
         "activityName": "Venice",
         "activityComments": "Great buffet!",
         "activityVotes": 3,
-        "activityImg": "img/venice.jpg"
+        "activityImg": "/img/venice.jpg"
     },
     {
         "activityName": "Wynn",
         "activityComments": "Amazing show.",
         "activityVotes": 2,
-        "activityImg": "img/Wynn.jpg"
+        "activityImg": "/img/Wynn.jpg"
     }
 ]

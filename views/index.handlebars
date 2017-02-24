@@ -20,10 +20,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg"/>
+                {{#user}}
+                <img class="img-circle" src="{{userImg}}"/>
                 <div>
-                    Daniel
+                    {{userName}}
                 </div>
+                {{/user}}
             </li>
             <li>
                 <a href="/index">Home</a>
@@ -80,7 +82,9 @@
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>My Trips</h1>
                     <div class="trip-list">
+                        {{#if hasTrip}}
                         <ul>
+                            {{#trip}}
                             {{#each finishedTrip}}
                             <div class="well well-lg">
                                 <div class="trip-content">
@@ -109,7 +113,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href=plan/{{_id}} role="button" class="btn btn-warning trip-button trip-button-plan">
+                                                <a href="/plan/{{_id}}" role="button" class="btn btn-warning trip-button trip-button-plan">
                                                     Plan
                                                 </a>
                                             </div>
@@ -137,7 +141,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href=planfinished/{{_id}} role="button" class="btn btn-warning trip-button trip-button-view">
+                                                <a href=plan/{{_id}} role="button" class="btn btn-warning trip-button trip-button-view">
                                                     View
                                                 </a>
                                             </div>
@@ -147,6 +151,10 @@
                             </div>
                             {{/each}}
                         </ul>
+                        {{/trip}}
+                        {{else}}
+                        <div class="noActivity">You don't have any trips. </br>Add some Trip!</div>
+                        {{/if}}
                     </div>
                         
 
@@ -168,7 +176,7 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script>
-    $("#wrapper").toggleClass("toggled");
+//    $("#wrapper").toggleClass("toggled");
     $("#menu-button").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");

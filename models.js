@@ -18,7 +18,8 @@ var UserSchema = new Mongoose.Schema({
     "passWord": String,
     "imgURL": String,
     "_trips": [{type: Schema.Types.ObjectId, ref: 'Trip'}],
-    "_friends": [{type: Schema.Types.ObjectId, ref: 'User'}]
+    "_friends": [{type: Schema.Types.ObjectId, ref: 'User'}],
+    "voted": [{type: Schema.Types.ObjectId}]
 });
 
 

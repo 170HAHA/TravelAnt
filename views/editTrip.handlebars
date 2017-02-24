@@ -82,17 +82,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
-                    <h1>Add trip</h1>
-                        <div class = "well well-lg well-form">
-                            <form class="form-horizontal" method="get" action="/addT">
+                    <h1>Edit trip</h1>
+                    {{#trip}}
+                        <div class = "well well-lg well-form editform" id={{_id}}>
+                            
+                            <form class="form-horizontal" method="get" action=/editT/{{_id}}>
                                 <fieldset>
 
                                 <!-- TripName Text input-->
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="textinput">TripName</label>  
                                   <div class="col-md-4">
-                                  <input id="textinput" name="tripName" type="text" placeholder="" class="form-control input-md" required>
-
+                                  <input id="textinput" name="tripName" type="text" value="{{tripName}}" placeholder="" class="form-control input-md" required>
                                   </div>
                                 </div>
 
@@ -100,7 +101,7 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="textinput">Destination</label>  
                                   <div class="col-md-4">
-                                  <input id="destination" name="destination" type="text" placeholder="" class="form-control input-md" required>
+                                  <input id="destination" name="destination" type="text" value="{{tripLocation}}" placeholder="" class="form-control input-md" required>
                                   </div>
                                 </div>
 
@@ -108,8 +109,8 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="startDate">Start Date</label>  
                                   <div class="col-md-4">
-                                  <input id="startDate" name="startDate" type="date" class="form-control input-md" required>
-
+                                  <input id="startDate" name="startDate" type="date" value='{{dateFormat tripStartDate "YYYY-MM-DD"}}' class="form-control input-md" required>
+                                    {{destination}}
                                   </div>
                                 </div>
 
@@ -117,7 +118,7 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="enddate">End Date</label>  
                                   <div class="col-md-4">
-                                  <input id="enddate" name="endDate" type="date" class="form-control input-md" required>
+                                  <input id="enddate" name="endDate" type="date" value='{{dateFormat tripEndDate "YYYY-MM-DD"}}' class="form-control input-md"  required>
 
                                   </div>
                                 </div>
@@ -126,7 +127,7 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="enddate">Plan Due Date</label>  
                                   <div class="col-md-4">
-                                  <input id="duedate" name="dueDate" type="date" class="form-control input-md">
+                                  <input id="duedate" name="dueDate" type="date" value='{{dateFormat voteDue "YYYY-MM-DD"}}' class="form-control input-md">
                                   <p class="help-block hint">Default Due Date is the same with Start Date.</p>
                                   </div>
                                 </div>
@@ -136,19 +137,25 @@
                                     <div class="col-md-4">
                                         <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
                                         <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
-                                        <p class = "hidden">[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
-                                        <p class = "hidden">Add a friend first.</p>
+                                        <p class= "hidden">[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
+                                        <p class= "hidden">Add a friend first.</p>
                                     </div>
                                 </div>
-
                                 <!-- Button (Double) -->
-                                <div class="form-group text-center">                    
-                                    <button id="Create" name="Create" type="submit" class="btn btn-primary">Create</button>
-                                    <a href="/index" role="button" class="btn btn-danger">Cancel</a>       
+                                <div class="form-group text-center">  
+                                    <!--div class="checkbox">
+                                      <label><input type="checkbox" name="leaveTrip" value="" required>I want to leave this trip.</label>
+                                    </div-->
+                                    <input name="leaveTrip" value=false type="hidden"></input>
+                                    <div id="submitBtn">
+                                    <button id="Edit" name="Edit" type="submit" class="btn btn-primary">Edit</button>
+                                    <a href="/index" role="button" class="btn btn-danger">Cancel</a>  
+                                    </div>
                                 </div>
-
+                                    {{/trip}}
                                 </fieldset>
                             </form>
+                            <button id="Leave" class="btn btn-warning" style="text-align:center">Leave this trip</button>
                         </div>
                 </div>
             </div>
@@ -156,27 +163,46 @@
     </div>
 </div>
 
-    <script src="js/jquery.js"></script>
+    <script src="/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     <script>
-//    $("#wrapper").toggleClass("toggled");
+        
+    $(document).ready(function() {
+       $("#Leave").click(function(e){
+            e.preventDefault();
+            console.log("LEAVE TRIP!");
+            var json = {"leaveTrip": true};
+            var id = $(this).parent().attr('id');
+           console.log(id);
+            $.get('/editT/'+id, json, function(){
+                window.location.href = '/index';
+        });
+    });
+    })
     $("#menu-button").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
     
+    
     </script>
     <script>
+        
+        {{#each participants}}console.log('{{Name}}');{{/each}}
+        
         Vue.component('v-select', VueSelect.VueSelect);
+
         new Vue({
-          el: '#invite-friends',
+          el: '.editform',
           data: {
-              selected: null,
+              leave: false,
+              selected: [{{#each participants}}'{{Name}}',{{/each}}],
               options: [{{#each myFriends}}'{{Name}}',{{/each}}]
           }
         });
+        
     </script>
 </body>
