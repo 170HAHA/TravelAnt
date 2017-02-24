@@ -16,6 +16,6 @@ exports.view = function(req, res){
     .exec(function(err, usr){
         if (err) return res.send(500);
         //console.log(usr[0]._friends);
-        res.render('myfriends', {'Friends':usr[0]._friends});
+        res.render('myfriends', {'Friends':usr[0]._friends, 'user': usr[0]});
     });
 };

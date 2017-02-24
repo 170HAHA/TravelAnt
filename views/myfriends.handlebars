@@ -21,7 +21,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 {{#user}}
-                <img class="img-circle" src="{{userImg}}"/>
+                <img class="img-circle" src="{{imgURL}}"/>
                 <div>
                     {{userName}}
                 </div>
@@ -82,6 +82,7 @@
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>My Friends</h1>
                     <div class="trip-list">
+                        {{#if Friends}}
                         <ul>
                             {{#each Friends}}
                             <div class="well well-lg">
@@ -102,6 +103,9 @@
                             </div>
                             {{/each}}
                         </ul>
+                        {{else}}
+                        <div class="noActivity">You don't have any friends. </br>Add some Friends!</div>
+                        {{/if}}
                     </div>
                         
 

@@ -22,7 +22,7 @@ exports.view = function(req, res) {
             }
             //console.log(notMyFriends);
             
-            res.render('addFriend', {"notMyFriends": notMyFriends}); 
+            res.render('addFriend', {"notMyFriends": notMyFriends, 'user': me[0]}); 
         });
         
     });

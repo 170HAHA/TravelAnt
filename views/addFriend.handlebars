@@ -22,8 +22,12 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <img class="img-circle" src="img/profile3.jpg"> </img>
-                <div>Daniel</div>
+                {{#user}}
+                <img class="img-circle" src="{{imgURL}}"/>
+                <div>
+                    {{userName}}
+                </div>
+                {{/user}}
             </li>
             <li>
                 <a href="/index">Home</a>
@@ -89,7 +93,7 @@
                                     <div class="col-md-4">
                                     <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
                                     <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
-                                    <p>[{{#each notMyFriends}}'{{userName}}',{{/each}}]</p>
+                                    <p class="hidden">[{{#each notMyFriends}}'{{userName}}',{{/each}}]</p>
                                     {{#if notMyFriends}}
                                     {{else}}
                                         <p>You have already added all of the users.</p>

@@ -139,8 +139,9 @@
                         {{/each}}
                 
                         {{else}}
+                        {{#if unfinished}}
                         <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
-                        
+                        {{/if}}
                         {{/if}}
                 
                         {{#trip}}

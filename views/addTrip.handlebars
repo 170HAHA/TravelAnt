@@ -136,7 +136,7 @@
                                     <div class="col-md-4">
                                     <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
                                     <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
-                                    <p>[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
+                                    <p class="hidden">[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
                                     {{#if myFriends}}
                                     {{else}}
                                         <p>Add a friend first.</p>

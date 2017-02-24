@@ -38,7 +38,11 @@ exports.view = function(req, res){
                 models.Trip.populate(usr2[0]._trips, {path: '_participants'}, function(err, trip2){
                     console.log("unfinished trips:" + trip2);
                     var unfinished_trip = trip2;
-                    res.render('index', {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip, 'user': {userName: usr[0].userName, userImg: usr[0].imgURL}});
+                    var hasTrip = true;
+                    if (unfinished_trip.length + finished_trip.length == 0){
+                        hasTrip = false;
+                    }
+                    res.render('index', {'trip': {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip}, 'user': {userName: usr[0].userName, userImg: usr[0].imgURL}, 'hasTrip': hasTrip});
                 });
                 
             });                                                                   

@@ -43,8 +43,9 @@ exports.uploadImg = function(req, res){
         fs.readFile(tmp_path, function (err, data) {
             if (err)    throw err;
             fs.writeFile(target_path, data, function (err) {
+                console.log(target_path.substring(8));
                 models.User
-                .findOneAndUpdate({_id: userID}, {$set: {imgURL: target_path.substring(9)}}, function(err, r){
+                .findOneAndUpdate({_id: userID}, {$set: {imgURL: target_path.substring(8)}}, function(err, r){
                     if (err)    return res.status(500).send();
                     res.redirect("/index");
                 });
