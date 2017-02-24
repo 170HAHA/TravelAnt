@@ -111,12 +111,13 @@
                 {{/trip}}
                
                     <div class="activity-list">
+                        {{#if activities}}
                         {{#each activities}}
                         <ul>
                             <div class="well well-lg activity-item">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <img src="/{{activityImg}}" class="img-rounded activity-img"></img>
+                                        <img src="{{activityImg}}" class="img-rounded activity-img"></img>
                                     </div>
                                     <div class="col-xs-12 col-sm-9">
                                         <div class="activity-content">
@@ -136,6 +137,12 @@
                             </div>
                         </ul>
                         {{/each}}
+                
+                        {{else}}
+                        <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
+                        
+                        {{/if}}
+                
                         {{#trip}}
                         {{#if unfinished}}
                         <ul>         
@@ -143,6 +150,7 @@
                         </ul>
                         {{/if}}
                         {{/trip}}
+                        
                 </div>
                
                 </div>

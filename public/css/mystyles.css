@@ -404,6 +404,7 @@ h1 > a{
     width: 150px;
     height: 40px;
     background-color: #ff8100;
+    margin-top: 20px;
 }
 
 .well-form {
@@ -431,3 +432,45 @@ h1 > a{
     text-align: center;
 }
 
+
+.hint {
+    font-size: 13px;
+}
+
+.noActivity {
+    font-size: 25px;
+    text-align: center;
+    color: #fdfdef;
+    background-color: #FFAE19;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+#img-upload{
+    width: 100px;
+    height: 100px;
+}
+.profilephoto {
+    text-align: center;
+}

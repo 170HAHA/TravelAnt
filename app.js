@@ -52,6 +52,8 @@ app.engine('handlebars', hbsEngine.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.favicon());
+app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir:'./uploads'}));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -104,7 +106,7 @@ app.get('/addF', addFriend.add);
 app.get('/editTrip/:tripID', addTrip.editview);
 app.get('/editT/:tripID', addTrip.edit);
 app.get('/settings',settings.view);
-app.get('/submitSettings',settings.submitStgs);
+app.post('/uploadImg',settings.uploadImg);
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);

@@ -84,24 +84,43 @@
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>Settings</h1>
                         <div class = "well well-lg">
-                            <form class="form-horizontal" method="get" action="/submitSettings">
+                            <form class="form-horizontal" method="post" action="/uploadImg" enctype="multipart/form-data">
                                 <fieldset>
+                                {{#user}}
+                                <div class="avatar" id={{imgURL}}>
                                     
-                                <div class="avatar">
-                                    <img class="img-circle" src="img/profile3.jpg"> </img>
-                                    <div>Daniel</div>
+                                    <img class="img-circle" id="img-upload"> </img>
+                                    <div>{{userName}}</div>
+                                    {{/user}}
                                 </div>
                                     
         
                                 
                                                                 <!-- TripName Text input-->
-                                <div class="form-group">
+                                <!--div class="form-group">
                                   <label class="col-md-6 control-label" for="textinput">Select a new avator</label>  
                                   <div class="col-md-6">
                                   <input type="file" id="exampleInputFile" class="text-center">
                                   </div>
+                                </div-->
+                                
+                                
+                                <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-sm-push-3">
+                                    <div class="form-group">
+                                        <label>Upload Image</label>
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-default btn-file">
+                                                    Browse… <input type="file" id="imgInp" accept="application/x-zip-compressed,image/*" name="userImg" required>
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control" readonly>
+                                        </div>
+                                        <!--img id='img-upload'/-->
+                                    </div>
                                 </div>
-
+                                </div>
                                 
 
                                 <!-- Button (Double) -->
@@ -129,9 +148,50 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+        
+        
+        $(document).ready( function() {
+            $('#img-upload').attr('src', $('#img-upload').parent().attr('id'));    
+            
+            
+            $(document).on('change', '.btn-file :file', function() {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function(event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#img-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function(){
+                readURL(this);
+            }); 	
+            
+	});
     
     </script>
-    <script>
+    <!--script>
         Vue.component('v-select', VueSelect.VueSelect);
         new Vue({
           el: '#add-friends',
@@ -140,5 +200,5 @@
           options: ['Venice','Tomas','John','Amy']
           }
         });
-    </script>
+    </script-->
 </body>

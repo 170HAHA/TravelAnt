@@ -109,7 +109,7 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="startDate">Start Date</label>  
                                   <div class="col-md-4">
-                                  <input id="startDate" name="startDate" type="date" value='{{dateFormat tripStartDate "yyyy-mm-dd"}}' class="form-control input-md" required>
+                                  <input id="startDate" name="startDate" type="date" value='{{dateFormat tripStartDate "YYYY-MM-DD"}}' class="form-control input-md" required>
                                     {{destination}}
                                   </div>
                                 </div>
@@ -118,7 +118,7 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="enddate">End Date</label>  
                                   <div class="col-md-4">
-                                  <input id="enddate" name="endDate" type="date" class="form-control input-md" required>
+                                  <input id="enddate" name="endDate" type="date" value='{{dateFormat tripEndDate "YYYY-MM-DD"}}' class="form-control input-md"  required>
 
                                   </div>
                                 </div>
@@ -127,8 +127,8 @@
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="enddate">Plan Due Date</label>  
                                   <div class="col-md-4">
-                                  <input id="duedate" name="dueDate" type="date" class="form-control input-md">
-                                  <p class="help-block">Default Due Date is the same with Start Date.</p>
+                                  <input id="duedate" name="dueDate" type="date" value='{{dateFormat voteDue "YYYY-MM-DD"}}' class="form-control input-md">
+                                  <p class="help-block hint">Default Due Date is the same with Start Date.</p>
                                   </div>
                                 </div>
                                 <!-- Invite Friends-->
