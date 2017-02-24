@@ -13,7 +13,7 @@ exports.planInfo = function(req, res){
     .find({_id: tripID})
     .populate('_activityList _participants')
     .exec(function(err, trip){
-        console.log("Plan: " + trip[0]);
+        
         res.render('plan', {data: trip[0]});
     });
     

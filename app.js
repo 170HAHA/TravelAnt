@@ -13,7 +13,6 @@ var moment = require('moment');
 
 var index = require('./routes/index');
 var project = require('./routes/project');
-var palette = require('./routes/palette');
 var myfriends = require('./routes/friends');
 
 var plan = require('./routes/plan');
@@ -24,6 +23,8 @@ var login = require('./routes/login');
 
 var addFriend = require('./routes/addFriend');
 var settings = require('./routes/settings');
+var searchYelp = require('./routes/searchYelp');
+var addtoDB = require('./routes/addtoDB');
 // Example route
 // var user = require('./routes/user');
 
@@ -98,7 +99,7 @@ app.get('/planfinished/:tripID', planfinished.planInfo);
 
 app.get('/addTrip', addTrip.view);
 
-app.get('/addT', addTrip.addTrip);
+app.get('/addT', addTrip.add);
 
 
 app.get('/addT', addTrip.add);
@@ -106,6 +107,8 @@ app.get('/addFriend', addFriend.view);
 app.get('/addF', addFriend.add);
 app.get('/settings',settings.view);
 app.get('/submitSettings',settings.submitStgs);
+app.post('/searchYelp', searchYelp.search);
+app.post('/addtoDB',addtoDB.add);
 // Example route
 // app.get('/users', user.list);
 //app.get('/palette', palette.randomPalette);

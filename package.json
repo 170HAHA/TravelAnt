@@ -12,16 +12,14 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "config": "^1.25.1",
     "express": "3.x",
     "express3-handlebars": "*",
     "mongodb": "*",
     "mongoose": "*",
-<<<<<<< HEAD
-    "yelp": "^1.0.2"
-=======
     "vue": "2.*",
-    "vue-select": "2.*"
->>>>>>> fd74d25bb7375a8045ebea857dff66cea1bcf647
+    "vue-select": "2.*",
+    "yelp": "^1.0.2"
   },
   "engines": {
     "node": "0.10.x"
