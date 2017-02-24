@@ -1,7 +1,7 @@
 [
     {
         "userName": "Amy",
-        "imgURL": "img/profile1.jpg",
+        "imgURL": "/img/profile1.jpg",
         "_trips": [],
         "passWord": "123456",
         "_friends": [],
@@ -9,7 +9,7 @@
     },
     {
         "userName": "Bob",
-        "imgURL": "img/profile2.jpg",
+        "imgURL": "/img/profile2.jpg",
         "_trips": [],
         "passWord": "123456",
         "_friends": [],

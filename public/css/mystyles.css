@@ -385,3 +385,36 @@ h1 > a{
 .box {
     width: 100%;
 }
+
+.btn-addtrip{
+    border: none;
+    float: right;
+    width: 150px;
+    height: 40px;
+    background-color: #ff8100;
+}
+
+.well-form {
+    padding-top: 60px;
+}
+
+.form-horizontal {
+    margin-top: 20px;
+}
+
+#submitBtn {
+    margin-top: 10px;
+}
+
+#Leave {
+    width: 115px;
+}
+
+#editForm {
+    text-align: center;
+}
+
+.editform {
+    margin-top: 20px;
+    text-align: center;
+}
