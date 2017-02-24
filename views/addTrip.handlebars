@@ -134,13 +134,10 @@
                                 <div id="invite-friends" class="form-group">
                                     <label class="col-md-4 control-label" for="enddate">Invite Friends</label> 
                                     <div class="col-md-4">
-                                    <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
-                                    <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
-                                    <p>[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
-                                    {{#if myFriends}}
-                                    {{else}}
-                                        <p>Add a friend first.</p>
-                                    {{/if}}
+                                        <v-select class="v-select" multiple v-model="selected" :options="options"></v-select>
+                                        <input id="selectedFriends" type="hidden" name="selectedFriends" :value="selected">
+                                        <p class = "hidden">[{{#each myFriends}}'{{Name}}',{{/each}}]</p>
+                                        <p class = "hidden">Add a friend first.</p>
                                     </div>
                                 </div>
 
