@@ -83,12 +83,12 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-push-1 col-lg-10 page-content">
                     <h1>Edit trip</h1>
-                    
+                    {{#trip}}
                         <div class = "well well-lg well-form editform" id={{_id}}>
                             
                             <form class="form-horizontal" method="get" action=/editT/{{_id}}>
                                 <fieldset>
-                                {{#trip}}
+                                
                                 <!-- TripName Text input-->
                                 <div class="form-group">
                                   <label class="col-md-4 control-label" for="textinput">TripName</label>  
