@@ -30,8 +30,8 @@ var app = express();
 // Connect to the Mongo database, whether locally or on Heroku
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
 var local_database_name = 'travelant';
-var local_database_uri  = 'mongodb://localhost/' + local_database_name
-var database_uri = process.env.MONGOLAB_URI || local_database_uri
+var local_database_uri  = 'mongodb://localhost/' + local_database_name;
+var database_uri = process.env.MONGODB_URI || local_database_uri;
 mongoose.connect(database_uri);
 
 
