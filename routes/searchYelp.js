@@ -18,7 +18,7 @@ module.exports = {};
 
 module.exports.search = function(req,res){
   // See http://www.yelp.com/developers/documentation/v2/search_api
-  yelp.search({ term: req.body.term, location: req.body.location, category_filter:'active'})
+  yelp.search({ term: req.body.term, location: req.body.location})
   .then(function (yelpres) {
     console.log("Searched...");
     res.json(yelpres);
