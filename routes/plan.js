@@ -54,8 +54,14 @@ exports.planInfo = function(req, res){
             }
 
             activityList.sort(compare);
+            
+            var hasActivity = true;
+            if (activityList.length == 0)
+                hasActivity = false;
+            
+            console.log(hasActivity);
 
-            res.render('plan', {trip: trip[0], activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
+            res.render('plan', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
         });
         
     });
