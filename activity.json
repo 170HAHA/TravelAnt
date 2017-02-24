@@ -3,24 +3,28 @@
         "activityName": "Sea World",
         "activityComments": "Love animals!",
         "activityVotes": 2,
-        "activityImg": "/img/seaworld.jpg"
+        "activityImg": "/img/seaworld.jpg",
+        "yelpUrl": "https://www.yelp.com/biz/seaworld-san-diego?adjust_creative=tT0sSqLAN4bBb0E6BkPoJg&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=tT0sSqLAN4bBb0E6BkPoJg"
     },
     {
         "activityName": "Balboa Park",
         "activityComments": "Amazing architecture!",
         "activityVotes": 1,
-        "activityImg": "/img/balboapark.jpg"
+        "activityImg": "/img/balboapark.jpg",
+        "yelpUrl": "https://www.yelp.com/biz/balboa-park-san-diego?adjust_creative=tT0sSqLAN4bBb0E6BkPoJg&utm_campaign=yelp_api&utm_medium=api_v2_search&utm_source=tT0sSqLAN4bBb0E6BkPoJg"
     },
     {
         "activityName": "Venice",
         "activityComments": "Great buffet!",
         "activityVotes": 3,
-        "activityImg": "/img/venice.jpg"
+        "activityImg": "/img/venice.jpg",
+        "yelpUrl": "https://www.yelp.com/biz/the-venetian-las-vegas-las-vegas-2"
     },
     {
         "activityName": "Wynn",
         "activityComments": "Amazing show.",
         "activityVotes": 2,
-        "activityImg": "/img/Wynn.jpg"
+        "activityImg": "/img/Wynn.jpg",
+        "yelpUrl": "https://www.yelp.com/biz/wynn-las-vegas-las-vegas-3"
     }
 ]

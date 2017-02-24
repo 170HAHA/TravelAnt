@@ -120,8 +120,9 @@
                                         <div class="well well-lg activity-item">
                                             <div class="row">
                                                 <div class="col-sm-3">
-
+                                                    <a href = "{{yelpUrl}}">
                                                     <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+                                                    </a>
 
                                                 </div>
                                                 <div class="col-xs-12 col-sm-9">
@@ -129,7 +130,7 @@
                                                         <h3>{{activityName}}</h3></br>
                                                         <div class="activity-comment">
                                                             <i class="fa fa-quote-left"></i>
-                                                            <h4>{{activityComments}}</h4>
+                                                            <a href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
                                                             <i class="fa fa-quote-right"></i>
                                                         </div>
                                                         <div class="activity-vote" id={{_id}}>
@@ -282,12 +283,33 @@
         $.post('/searchYelp', json, function(res) {
         
             var new_html = '';
-            for(var i = 0; i < Math.min(10,res["businesses"].length); ++i) {
-                var idd = "plus"+i;
-                new_html = new_html +' <div align = "middle" ><a href='
-                +res["businesses"][i]["url"]+' target="_blank"><img align = "middle" class="img-rounded" src="'+res["businesses"][i]["image_url"]+'" style = "width:40%;" ></a><button id="'+idd+'"' +' type="button" class="btn btn-default addAct">+</button>'+ '<a href='+res["businesses"][i]["url"]
-                +' target="_blank"><h5 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">'
-                +res["businesses"][i]["name"]+'</h5></a></div>';
+            
+            if(res.hasOwnProperty("data")) {
+                console.log("no search result");
+                new_html = '<div align = "middle" ><h3 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">No Search Result</h3></div>';
+            }
+            else {
+                for(var i = 0; i < Math.min(10,res["businesses"].length); ++i) {
+                    var idd = "plus"+i;
+                    var imglink = "/img/icon.jpg";
+                    var urllink = '/plan/'+"{{trip._id}}";
+                    var activityname = "";
+
+                    if(res["businesses"][i].hasOwnProperty("image_url")) {
+                        imglink = res["businesses"][i]["image_url"];
+                    }
+                    if(res["businesses"][i].hasOwnProperty("url")) {
+                        urllink = res["businesses"][i]["url"];
+                    }
+                    if(res["businesses"][i].hasOwnProperty("name")) {
+                        activityname = res["businesses"][i]["name"];
+                    }
+
+                    new_html = new_html +' <div align = "middle" ><a href='
+                    +urllink+' target="_blank"><img align = "middle" class="img-rounded" src='+imglink+' style = "width:40%;" ></a><button id="'+idd+'"' +' type="button" class="btn btn-default addAct">+</button>'+ '<a href='+urllink
+                    +' target="_blank"><h5 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">'
+                    +activityname+'</h5></a></div>';
+                }
             }
             console.log("Searched...");
             var details_div = $('.showresult');
@@ -296,11 +318,31 @@
                 $(".addAct").click(function(e){
                     e.preventDefault();
                     var id = parseInt($(this).attr("id").substring(4));
-                    var activityImg = res["businesses"][id]["image_url"];
-                    var activityName = res["businesses"][id]["name"];
-                    var yelpUrl = res["businesses"][id]["url"];
+                    var imglink = "/img/icon.jpg";
+                    var urllink = '/plan/'+"{{trip._id}}";
+                    var activityname = "";
+                    var activitycomments = "";
+
+                    if(res.hasOwnProperty("businesses")) {
+                        if(res["businesses"][id].hasOwnProperty("image_url")) {
+                            imglink = res["businesses"][id]["image_url"];
+                        }
+                        if(res["businesses"][id].hasOwnProperty("url")) {
+                            urllink = res["businesses"][id]["url"];
+                        }
+                        if(res["businesses"][id].hasOwnProperty("name")) {
+                            activityname = res["businesses"][id]["name"];
+                        }
+                        if(res["businesses"][id].hasOwnProperty("snippet_text")) {
+                            activitycomments = res["businesses"][id]["snippet_text"];
+                        }
+
+                    }
+                    var activityImg = imglink;
+                    var activityName = activityname;
+                    var yelpUrl = urllink;
                     var tripID = "{{trip._id}}";
-                    var activityComments = res["businesses"][id]["snippet_text"];
+                    var activityComments = activitycomments;
 
                     console.log("debug",tripID);
                 

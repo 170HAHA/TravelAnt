@@ -25,6 +25,9 @@ module.exports.search = function(req,res){
     
   })
   .catch(function (err) {
+
     console.error(err);
+    res.json(err);
   });
+  
 }

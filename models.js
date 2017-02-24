@@ -27,7 +27,8 @@ var ActivitySchema = new Mongoose.Schema({
     "activityName": String,
     "activityComments": String,
     "activityVotes": Number,
-    "activityImg": String
+    "activityImg": String,
+    "yelpUrl": String
 });
 
 exports.Trip = Mongoose.model('Trip', TripSchema);
