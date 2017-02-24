@@ -308,6 +308,11 @@ ul{
     text-align: center;
 }
 
+.avatar{
+    margin:40px;
+    text-align: center; 
+}
+
 .sidebar-brand div{
     text-indent:-30px;
 }
@@ -317,6 +322,13 @@ ul{
     height: 100px;
     display: block;
     margin: auto;
+}
+
+.avatar .img-circle{
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto; 
 }
 
 .back{
@@ -418,3 +430,4 @@ h1 > a{
     margin-top: 20px;
     text-align: center;
 }
+
