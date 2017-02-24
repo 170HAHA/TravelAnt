@@ -114,42 +114,39 @@
                
                     <div class="activity-list">
                         {{#if activities}}
-                        {{#each activities}}
-                        <ul>
-                            <div class="well well-lg activity-item">
-                                <div class="row">
-                                    <div class="col-sm-3">
+                            {{#each activities}}
+                            <ul>
+                                <div class="well well-lg activity-item">
+                                    <div class="row">
+                                        <div class="col-sm-3">
 
-                                        <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+                                            <img src="{{activityImg}}" class="img-rounded activity-img"></img>
 
-                                    </div>
-                                    <div class="col-xs-12 col-sm-9">
-                                        <div class="activity-content">
-                                            <h3>{{activityName}}</h3></br>
-                                            <div class="activity-comment">
-                                                <i class="fa fa-quote-left"></i>
-                                                <h4>{{activityComments}}</h4>
-                                                <i class="fa fa-quote-right"></i>
-                                            </div>
-                                            <div class="activity-vote" id={{_id}}>
-                                                <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i></a>
-                                                <span class="activity-vote-num">{{activityVotes}}</span>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9">
+                                            <div class="activity-content">
+                                                <h3>{{activityName}}</h3></br>
+                                                <div class="activity-comment">
+                                                    <i class="fa fa-quote-left"></i>
+                                                    <h4>{{activityComments}}</h4>
+                                                    <i class="fa fa-quote-right"></i>
+                                                </div>
+                                                <div class="activity-vote" id={{_id}}>
+                                                    {{#if unfinished}}
+                                                        <a href=""><i class="fa fa-arrow-up {{#if voted}}disabled{{/if}}"></i> </a>
+                                                    {{/if}}
+                                                    <span class="activity-vote-num">{{activityVotes}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ul>
-                        {{/each}}
-
-                        
-                
-
-                
+                            </ul>
+                            {{/each}}
                         {{else}}
-                        {{#if unfinished}}
-                        <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
-                        {{/if}}
+                            {{#if unfinished}}
+                                <div class="noActivity">You don't have any activities. </br>Add some into your Trip!</div>
+                            {{/if}}
                         {{/if}}
                 
                         {{#trip}}
