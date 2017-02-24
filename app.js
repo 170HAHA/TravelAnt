@@ -127,7 +127,7 @@ app.get('/addF', authentication);
 app.get('/addF', addFriend.add);
 app.get('/editTrip', authentication);
 app.get('/editTrip/:tripID', addTrip.editview);
-app.get('/editT/:tripID', authentication);
+//app.get('/editT/:tripID', authentication);
 app.get('/editT/:tripID', addTrip.edit);
 app.get('/settings', authentication);
 app.get('/settings',settings.view);
