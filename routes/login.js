@@ -1,7 +1,7 @@
 var models = require("../models");
 
 exports.view = function(req, res) {   
-    res.render('login', {});
+    res.render('login', {"Tip":""});
 };
 
 exports.userLogIn = function(req, res){
@@ -37,12 +37,14 @@ exports.userSignUp = function(req, res){
     
     newUser.userName = user_data.userName;
     newUser.passWord = user_data.passWord;
+    newUser.imgURL = '/img/profile6.jpg';
     
     models.User
     .find({userName: user_data.userName})
     .exec(function(err, usr){
        if (usr.length > 0){
-           res.json({exist: true});
+           //res.json({exist: true});
+           res.render("login", {"Tip":" The username already exists. Please select another one or directly login."});
            return;
        }else{
            newUser.save(function(err){

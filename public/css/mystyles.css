@@ -433,6 +433,7 @@ h1 > a{
 }
 
 
+
 .hint {
     font-size: 13px;
 }
@@ -473,4 +474,7 @@ h1 > a{
 }
 .profilephoto {
     text-align: center;
+
+.tip {
+    color:floralwhite;
 }
