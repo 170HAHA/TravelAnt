@@ -18,7 +18,8 @@ var models   = require('./models');
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
 var local_database_name = 'travelant';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name;
-var mongodb_uri = 'mongodb://heroku_ljp273nd:travelant123@ds161059.mlab.com:61059/heroku_ljp273nd'
+//var mongodb_uri = 'mongodb://heroku_ljp273nd:travelant123@ds161059.mlab.com:61059/heroku_ljp273nd'
+var mongodb_uri = 'mongodb://heroku_gdw18rch:travelant123@ds161069.mlab.com:61069/heroku_gdw18rch';
 //var database_uri = process.env.MONGODB_URI || local_database_uri;
 var database_uri = mongodb_uri;
 
