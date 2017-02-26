@@ -18,7 +18,9 @@ var models   = require('./models');
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
 var local_database_name = 'travelant';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name;
-var database_uri = process.env.MONGODB_URI || local_database_uri;
+var mongodb_uri = 'mongodb://heroku_ljp273nd:travelant123@ds161059.mlab.com:61059/heroku_ljp273nd'
+//var database_uri = process.env.MONGODB_URI || local_database_uri;
+var database_uri = mongodb_uri;
 
 
 mongoose.connect(database_uri, function(error, db) {
