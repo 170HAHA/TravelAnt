@@ -260,7 +260,8 @@ ul{
 
 
 .well.well-lg.activity-item{
-    height: 180px;
+    min-height: 180px;
+    max-height:250px;
     padding: 0px;
 }
 
