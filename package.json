@@ -15,6 +15,7 @@
     "config": "^1.25.1",
     "express": "3.x",
     "express3-handlebars": "*",
+    "heroku": "^0.2.0",
     "mongodb": "*",
     "mongoose": "*",
     "vue": "2.*",
