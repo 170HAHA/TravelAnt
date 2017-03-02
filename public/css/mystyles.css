@@ -483,3 +483,9 @@ h1 > a{
 .tip {
     color:floralwhite;
 }
+
+.plansubtitle {
+    font-family:avenir, 'avenir next', helvetica, arial, sans-serif;
+    color: dimgray; !important
+    font-size: 15px; !important
+}

@@ -42,7 +42,8 @@ exports.view = function(req, res){
                     if (unfinished_trip.length + finished_trip.length == 0){
                         hasTrip = false;
                     }
-                    res.render('index', {'trip': {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip}, 'user': {userName: usr[0].userName, userImg: usr[0].imgURL}, 'hasTrip': hasTrip});
+                    var hasUnfinished = unfinished_trip.length > 0, hasFinished = finished_trip.length > 0;
+                    res.render('index', {'trip': {'finishedTrip': unfinished_trip, 'unfinishedTrip': finished_trip, 'hasUnfinished': hasUnfinished, 'hasFinished': hasFinished}, 'user': {userName: usr[0].userName, userImg: usr[0].imgURL}, 'hasTrip': hasTrip});
                 });
                 
             });                                                                   
