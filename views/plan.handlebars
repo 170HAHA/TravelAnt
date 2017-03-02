@@ -249,11 +249,11 @@
         var votes_num = votes.text();
         
         if ($(this).hasClass("disabled")){
-            votes_num = parseInt(votes_num) - 1;
+            votes_num = parseInt(votes_num) + 1;
             $(this).removeClass("disabled");
         }
         else{
-            votes_num = parseInt(votes_num) + 1;
+            votes_num = parseInt(votes_num) - 1;
             $(this).addClass("disabled");
         } 
         
