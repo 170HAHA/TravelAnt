@@ -251,7 +251,7 @@ exports.edit = function(req, res){
                 console.log("New Participants: " + newParticipants);
 
                 models.Trip
-                .findOneAndUpdate({_id: tripID}, {$set: {tripName: tripName, tripLocation: location, tripStartDate: startDate, tripEndDate: endDate, _participants: participantIDs}}, function(err,  r){
+                .findOneAndUpdate({_id: tripID}, {$set: {tripName: tripName, tripLocation: location, tripStartDate: startDate, tripEndDate: endDate, voteDue: dueDate, _participants: participantIDs}}, function(err,  r){
                     if (err)    return res.send(500);
 
                     console.log("Edited trip: " + r);
