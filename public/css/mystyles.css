@@ -198,6 +198,18 @@ h4{
     background-image: none;
 }
 
+.btn-danger{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-image: none;
+}
+
+.btn-primary{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-image: none;
+}
+
 .trip-button{
     float:right;
     width:80px;
