@@ -1,5 +1,19 @@
 <html lang="en">
 <head>
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+    k='141839730-0',d=document,l=d.location,c=d.cookie;
+    if(l.search.indexOf('utm_expid='+k)>0)return;
+    function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+    indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+    length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+    '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    </script><script>utmx('url','A/B');</script>
+    <!-- End of Google Analytics Content Experiment code -->
     <meta http-equiv="Content-Type" content="text/html; charset=GBK">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -132,17 +146,17 @@
                                         <div class="well well-lg activity-item">
                                             <div class="row">
                                                 <div class="col-xs-0 col-sm-3">
-                                                    <a href = "{{yelpUrl}}">
+                                                    <a class="acitivtyimg" href = "{{yelpUrl}}">
                                                         <img src="{{activityImg}}" class="img-rounded activity-img"></img>
                                                     </a>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-9">
                                                     <div class="activity-content">
-                                                        <a href = "{{yelpUrl}}"><h3>{{activityName}}</h3></a>
-                                                        <a href="{{yelpUrl}}"><i class='fa fa-external-link yelplink'></i></br></a>
+                                                        <a class="activityname" href = "{{yelpUrl}}"><h3>{{activityName}}</h3></a>
+                                                        <a class="activityicon" href="{{yelpUrl}}"><i class='fa fa-external-link yelplink'></i></br></a>
                                                         <div class="activity-comment">
                                                             <i class="fa fa-quote-left"></i>
-                                                            <a href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
+                                                            <a class="activitycomment" href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
                                                             <i class="fa fa-quote-right"></i>
                                                         </div>
                                                         <div class="activity-vote" id={{_id}}>
@@ -204,7 +218,7 @@
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close addactivitybutton" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Add Activity</h4>
                               </div>
                               <div class="modal-body">
@@ -274,6 +288,23 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    
+    $(".activityimg").click(function(e){
+		ga("send", "event", "yelplink", "click");
+	});
+    $(".activityname").click(function(e){
+		ga("send", "event", "yelplink", "click");
+	});
+    $(".activitycomment").click(function(e){
+		ga("send", "event", "yelplink", "click");
+	});
+    $(".activityicon").click(function(e){
+		ga("send", "event", "yelplink", "click");
+	});
+    $(".addactivitybutton").click(function(e){
+		ga("send", "event", "addactivity", "click");
+	});
+        
     </script>
 
     <script>
