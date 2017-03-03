@@ -70,6 +70,73 @@ exports.planInfo = function(req, res){
     
 };
 
+exports.planInfoB = function(req, res){
+    var userID = req.session.user._id;
+    var tripID = req.params.tripID;
+    
+    console.log("tripID: " + tripID);
+    
+// <<<<<<< HEAD
+//     models.Trip
+//     .find({_id: tripID})
+//     .populate('_activityList _participants')
+//     .exec(function(err, trip){
+        
+//         res.render('plan', {data: trip[0]});
+// =======
+    models.User
+    .find({_id: userID})
+    .exec(function(err, user){
+        var votedActivities = user[0].voted;
+        
+        models.Trip
+        .find({_id: tripID})
+        .populate('_activityList _participants')
+        .exec(function(err, trip){
+            console.log("Plan: " + trip[0]);
+            
+            var nowTime = new Date();
+            var unfinished = true;
+            if (trip[0].voteDue < nowTime){
+                unfinished = false;
+            }
+            
+            trip[0].unfinished = unfinished;
+
+            var activityList = trip[0]._activityList;
+
+            for (var i = 0; i < activityList.length; ++i){
+                if (votedActivities.indexOf(activityList[i]._id) == -1){
+                    activityList[i].voted = false;
+                }else{
+                    activityList[i].voted = true;
+                }
+            }
+
+            console.log("Activity: " + activityList);
+
+            function compare(a, b){
+                return b.activityVotes - a.activityVotes;
+            }
+
+            activityList.sort(compare);
+            
+            var hasActivity = true;
+            if (activityList.length == 0)
+                hasActivity = false;
+            
+            console.log(hasActivity);
+
+            res.render('planB', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
+        });
+        
+    });
+    
+    
+    
+};
+
+
 
 exports.voteUpdate = function(req, res){
     var activityID = req.query.activityID;

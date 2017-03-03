@@ -104,7 +104,7 @@ app.get('/myfriends', myfriends.view);
 
 app.get('/plan/:tripID', authentication);
 app.get('/plan/:tripID', plan.planInfo);
-app.get('/planfinished/:tripID', planfinished.planInfo);
+app.get('/planB/:tripID', plan.planInfoB);
 
 app.get('/vote', authentication);
 app.get('/vote', plan.voteUpdate);
