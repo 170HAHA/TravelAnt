@@ -536,6 +536,7 @@ transition:all .4s ease-in-out
 
 .hovereffect img {
 height: 100%;
+width: 100%;
 display:block;
 position:absolute;
 -webkit-transition:all .4s linear;
