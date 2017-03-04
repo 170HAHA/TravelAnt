@@ -102,9 +102,12 @@ app.get('/index', index.view);
 app.get('/myfriends', authentication);
 app.get('/myfriends', myfriends.view);
 
-app.get('/plan/:tripID', authentication);
-app.get('/plan/:tripID', plan.planInfo);
-app.get('/planB/:tripID', plan.planInfoB);
+//app.get('/plan/:tripID', authentication);
+//app.get('/plan/:tripID', plan.planInfo);
+//app.get('/planB/:tripID', plan.planInfoB);
+
+app.get('/plan', plan.planInfo);
+app.get('/planB', plan.planInfoB);
 
 app.get('/planA', plan.planInfo_A);
 app.get('/planB', plan.planInfo_B);
