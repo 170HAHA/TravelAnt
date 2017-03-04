@@ -288,13 +288,35 @@ exports.planInfo_A = function(req, res){
         
 //         res.render('plan', {data: trip[0]});
 // =======
+    var userID = null;
+    if (req.session.user != null)
+        userID = req.session.user._id;
+    var tripID = null;
+    if (req.query != null)
+        tripID = req.query.id;
+    
+    if (userID == null){
+        userQuery = {userName: 'Amy'};
+    }else{
+        userQuery = {_id: userID};
+    }
+    
+    if (tripID == null){
+        tripQuery = {tripName: 'After-Graduation Trip'};
+    }else{
+        tripQuery = {_id: tripID};
+    }
+    
+    console.log(userQuery);
+    console.log(tripQuery);
+    
     models.User
-    .find({userName: 'Amy'})
+    .find(userQuery)
     .exec(function(err, user){
         var votedActivities = user[0].voted;
         
         models.Trip
-        .find({tripName: 'After-Graduation Trip'})
+        .find(tripQuery)
         .populate('_activityList _participants')
         .exec(function(err, trip){
             console.log("Plan: " + trip[0]);
@@ -352,13 +374,32 @@ exports.planInfo_B = function(req, res){
         
 //         res.render('plan', {data: trip[0]});
 // =======
+    var userID = null;
+    if (req.session.user != null)
+        userID = req.session.user._id;
+    var tripID = null;
+    if (req.query != null)
+        tripID = req.query.id;
+    
+    if (userID == null){
+        userQuery = {userName: 'Amy'};
+    }else{
+        userQuery = {_id: userID};
+    }
+    
+    if (tripID == null){
+        tripQuery = {tripName: 'After-Graduation Trip'};
+    }else{
+        tripQuery = {_id: tripID};
+    }
+    
     models.User
-    .find({userName: 'Amy'})
+    .find(userQuery)
     .exec(function(err, user){
         var votedActivities = user[0].voted;
         
         models.Trip
-        .find({tripName: 'After-Graduation Trip'})
+        .find(tripQuery)
         .populate('_activityList _participants')
         .exec(function(err, trip){
             console.log("Plan: " + trip[0]);

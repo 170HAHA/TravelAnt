@@ -106,11 +106,11 @@ app.get('/myfriends', myfriends.view);
 //app.get('/plan/:tripID', plan.planInfo);
 //app.get('/planB/:tripID', plan.planInfoB);
 
-app.get('/plan', plan.planInfo);
-app.get('/planB', plan.planInfoB);
-
 app.get('/planA', plan.planInfo_A);
 app.get('/planB', plan.planInfo_B);
+
+//app.get('/planA', plan.planInfo_A);
+//app.get('/planB', plan.planInfo_B);
 
 app.get('/vote', authentication);
 app.get('/vote', plan.voteUpdate);
