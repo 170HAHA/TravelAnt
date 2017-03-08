@@ -14,7 +14,6 @@
     '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
     </script><script>utmx('url','A/B');</script>
     <!-- End of Google Analytics Content Experiment code -->
-
     <meta http-equiv="Content-Type" content="text/html; charset=GBK">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -126,6 +125,18 @@
                         <a href="#" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
                     </div>
                {{/trip}}
+                    
+                 {{#trip}}
+                    {{#if unfinished}}
+                    <div class="addButton">
+                        <ul>         
+                            <button type="button" class="btn btn-warning btn-addtrip" data-toggle="modal" data-target="#myModal"> Add an activity</button>
+                        </ul>
+                    </div><br>
+                    {{/if}}
+                    {{/trip}}
+                    
+                    
                     <div class="activity-list">
                         {{#if unfinished}}
                             {{#if hasActivity}}
@@ -135,20 +146,17 @@
                                         <div class="well well-lg activity-item">
                                             <div class="row">
                                                 <div class="col-xs-0 col-sm-3">
-                                                    <div class="hovereffect">
-                                                        <img class="img-responsive" src="{{activityImg}}" alt="">
-                                                        <div class="overlay">
-                                                           <h2>View on Yelp</h2>
-                                                           <a class="info" href="{{yelpUrl}}">Click here</a>
-                                                        </div>
-                                                    </div>
+                                                    <a class="acitivtyimg" href = "{{yelpUrl}}">
+                                                        <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+                                                    </a>
                                                 </div>
                                                 <div class="col-xs-12 col-sm-9">
                                                     <div class="activity-content">
                                                         <a class="activityname" href = "{{yelpUrl}}"><h3>{{activityName}}</h3></a>
+                                                        <a class="activityicon" href="{{yelpUrl}}"><i class='fa fa-external-link yelplink'></i></br></a>
                                                         <div class="activity-comment">
                                                             <i class="fa fa-quote-left"></i>
-                                                            <a class= "activitycomment" href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
+                                                            <a class="activitycomment" href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
                                                             <i class="fa fa-quote-right"></i>
                                                         </div>
                                                         <div class="activity-vote" id={{_id}}>
@@ -173,18 +181,15 @@
                                 <div class="well well-lg activity-item">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <div class="hovereffect">
-                                                        <img class="img-responsive" src="{{activityImg}}" alt="">
-                                                        <div class="overlay">
-                                                           <h2>View on Yelp</h2>
-                                                           <a class="info" href="{{yelpUrl}}">Click here</a>
-                                                        </div>
-                                                    </div>
+                                            <a href = "{{yelpUrl}}">
+                                                <img src="{{activityImg}}" class="img-rounded activity-img"></img>
+                                            </a>
 
                                         </div>
                                         <div class="col-xs-12 col-sm-9">
                                             <div class="activity-content">
-                                                <a href = "{{yelpUrl}}"><h3>{{activityName}}</h3><i class='fa fa-external-link'></i></br></a>
+                                                <a href = "{{yelpUrl}}"><h3>{{activityName}}</h3></a>
+                                                <a href="{{yelpUrl}}"><i class='fa fa-external-link yelplink'></i></br></a>
                                                 <div class="activity-comment">
                                                     <i class="fa fa-quote-left"></i>
                                                     <a href = "{{yelpUrl}}"><h4>{{activityComments}}</h4></a>
@@ -202,13 +207,6 @@
                         {{/if}}
                 
                 
-                        {{#trip}}
-                        {{#if unfinished}}
-                        <ul>         
-                            <button type="button" class="btn btn-warning btn-addtrip" data-toggle="modal" data-target="#myModal"> Add an activity</button>
-                        </ul>
-                        {{/if}}
-                        {{/trip}}
                         
                 </div>
                
@@ -220,7 +218,7 @@
                             <!-- Modal content-->
                             <div class="modal-content">
                               <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close addactivitybutton" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Add Activity</h4>
                               </div>
                               <div class="modal-body">
@@ -290,8 +288,8 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-        
-    $(".info").click(function(e){
+    
+    $(".activityimg").click(function(e){
 		ga("send", "event", "yelplink", "click");
 	});
     $(".activityname").click(function(e){
@@ -300,9 +298,13 @@
     $(".activitycomment").click(function(e){
 		ga("send", "event", "yelplink", "click");
 	});
+    $(".activityicon").click(function(e){
+		ga("send", "event", "yelplink", "click");
+	});
     $(".addactivitybutton").click(function(e){
 		ga("send", "event", "addactivity", "click");
 	});
+        
     </script>
 
     <script>
@@ -402,6 +404,7 @@
     });
 
     </script>
+
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

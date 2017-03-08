@@ -85,9 +85,9 @@
                         {{#if hasTrip}}
                         <ul>
                             {{#trip}}
-                            <!--{{#if hasUnfinished}}
+                            {{#if hasUnfinished}}
                             <div class="plansubtitle"><h2>Ongoing Plan</h2></div>
-                            {{/if}}-->
+                            {{/if}}
                             {{#each finishedTrip}}
                             <div class="well well-lg">
                                 <div class="trip-content">
@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href="/plan/{{_id}}" role="button" class="btn btn-warning trip-button trip-button-plan">
+                                                <a href="/planA?id={{_id}}" role="button" class="btn btn-warning trip-button trip-button-plan">
                                                     Plan
                                                 </a>
                                             </div>
@@ -125,12 +125,10 @@
                                 </div>
                             </div>
                             {{/each}}
-                            <!--
                             </br>
                             {{#if hasFinished}}
                             <h2 class="plansubtitle">Finished Plan</h2>
                             {{/if}}
-                            -->
                             {{#each unfinishedTrip}}
                             <div class="well well-lg">
                                 <div class="trip-content">
@@ -150,7 +148,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-5 trip-progress-enter">
                                             <div class="trip-enter">
-                                                <a href=plan/{{_id}} role="button" class="btn btn-warning trip-button trip-button-view">
+                                                <a href="/planA?id={{_id}}" role="button" class="btn btn-warning trip-button trip-button-view">
                                                     View
                                                 </a>
                                             </div>
@@ -190,5 +188,16 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    </script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-92985816-1', 'auto');
+      ga('send', 'pageview');
+
     </script>
 </body>

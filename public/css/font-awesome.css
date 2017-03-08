@@ -596,6 +596,7 @@
 }
 .fa-external-link:before {
   content: "\f08e";
+    margin-left: 10px;
 }
 .fa-sign-in:before {
   content: "\f090";
