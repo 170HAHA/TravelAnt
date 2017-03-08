@@ -25,7 +25,6 @@ exports.view = function(req, res){
     .exec(function(err, usr){
         if (err) return res.send(500);
         models.Trip.populate(usr[0]._trips, {path: '_participants'}, function(err, trip1){
-            console.log("finished trips:" + trip1);
             var finished_trip = trip1;
             models.User
             .find({_id: userID})
