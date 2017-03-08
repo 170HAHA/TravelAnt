@@ -353,7 +353,7 @@ exports.planInfo_A = function(req, res){
             
             console.log(hasActivity);
 
-            res.render('plan', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
+            res.render('plan', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL},AB: 'A'});
         });
         
     });
@@ -436,7 +436,7 @@ exports.planInfo_B = function(req, res){
             
             console.log(hasActivity);
 
-            res.render('planB', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL}});
+            res.render('planB', {trip: trip[0], unfinished: unfinished, hasActivity: hasActivity,  activities: activityList, user: {userName: user[0].userName, userImg: user[0].imgURL},AB:'B'});
         });
         
     });
