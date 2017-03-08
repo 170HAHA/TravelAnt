@@ -8,6 +8,7 @@ exports.add = function(req, res){
     var activityVotes = '0';
     var tripID = req.body.tripID;
     var activityComments = req.body.activityComments;
+    var AB = req.body.AB;
     
     var newActivity = new models.Activity();
     newActivity.activityImg = activityImg;
@@ -26,7 +27,8 @@ exports.add = function(req, res){
     
     newActivity.save(function(err){
     		console.log("aaaaa"+tripID);
-	        var to = '/plan/'+tripID;
+	        //var to = '/plan/'+tripID;
+            var to = '/plan'+AB+'?id='+tripID;
 	        res.redirect(to);
     
         });

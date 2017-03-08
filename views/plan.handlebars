@@ -126,6 +126,18 @@
                         <a href="#" class="invisible"><i class="fa fa-chevron-down profile-down"></i></a>
                     </div>
                {{/trip}}
+                    
+               {{#trip}}
+                   {{#if unfinished}}
+                    <div class="addButton">
+                        <ul>         
+                            <button type="button" class="btn btn-warning btn-addtrip" data-toggle="modal" data-target="#myModal"> Add an activity</button>
+                        </ul>
+                    </div><br>
+                   {{/if}}
+                {{/trip}}
+                    
+                    
                     <div class="activity-list">
                         {{#if unfinished}}
                             {{#if hasActivity}}
@@ -201,7 +213,7 @@
                             {{/each}}                 
                         {{/if}}
                 
-                
+                <!--
                         {{#trip}}
                         {{#if unfinished}}
                         <ul>         
@@ -209,6 +221,7 @@
                         </ul>
                         {{/if}}
                         {{/trip}}
+                !-->
                         
                 </div>
                
@@ -387,13 +400,14 @@
                         'activityName': activityName,
                         'yelpUrl': yelpUrl,
                         'tripID': tripID,
-                        'activityComments':activityComments
+                        'activityComments':activityComments,
+                        'AB':'{{AB}}'
                     };
 
 
                     $.post('/addtoDB', jsonadd, function() {
-                        var to = '/plan/'+tripID;
-                        console.log("debug",tripID);
+                        var to = '/plan'+'{{AB}}'+'?id='+tripID;
+                        console.log("debug",to);
                         window.location.href = to;
                     });
                 });
