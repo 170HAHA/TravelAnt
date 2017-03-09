@@ -389,12 +389,13 @@
                         'activityName': activityName,
                         'yelpUrl': yelpUrl,
                         'tripID': tripID,
-                        'activityComments':activityComments
+                        'activityComments':activityComments,
+                        'AB':'{{AB}}'
                     };
 
 
                     $.post('/addtoDB', jsonadd, function() {
-                        var to = '/plan/'+tripID;
+                        var to = '/plan'+'{{AB}}'+'?id='+tripID;
                         console.log("debug",tripID);
                         window.location.href = to;
                     });
