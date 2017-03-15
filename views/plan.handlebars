@@ -356,10 +356,10 @@
                         activityname = res["businesses"][i]["name"];
                     }
 
-                    new_html = new_html +' <div align = "middle" ><a href='
-                    +urllink+' target="_blank"><img align = "middle" class="img-rounded" src='+imglink+' style = "width:40%;" ></a><button id="'+idd+'"' +' type="button" class="btn btn-default addAct">+</button>'+ '<a href='+urllink
-                    +' target="_blank"><h5 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">'
-                    +activityname+'</h5></a></div>';
+                    new_html = new_html +' <div class = "well well-lg activity-item" ><a href='
+                    +urllink+' target="_blank"><img align = "left" class="img-rounded col-xs-0 col-sm-3" src='+imglink+' style = "width:40%;" ></a>'+ '<a href='+urllink
+                    +' target="_blank"><div align = "left" class="card-title" style="margin-top: 30px; margin-left: 50px; font-size: 15px">'
+                    +activityname+'</div></a>'+'<button id="'+idd+'"' +' type="button" class="btn btn-warning" style = "margin-left: 260px; margin-top: 70px">+</button>' +'</div>';
                 }
             }
             console.log("Searched...");
