@@ -107,7 +107,7 @@ app.get('/myfriends', myfriends.view);
 //app.get('/planB/:tripID', plan.planInfoB);
 
 app.get('/planA', plan.planInfo_A);
-app.get('/planB', plan.planInfo_B);
+//app.get('/planB', plan.planInfo_B);
 
 //app.get('/planA', plan.planInfo_A);
 //app.get('/planB', plan.planInfo_B);

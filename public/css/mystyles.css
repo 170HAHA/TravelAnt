@@ -272,8 +272,8 @@ ul{
 
 
 .well.well-lg.activity-item{
-    min-height: 10px;
-    max-height:110px;
+    min-height: 180px;
+    max-height: 250px;
     height: 200px;
     padding: 0px;
 }
@@ -607,4 +607,17 @@ transition-delay:.2s;
 
 .addButton {
     margin-bottom: 30px;
+}
+
+.class{
+    height: 50px;
+}
+
+.card{
+    max-width: 150px;
+}
+
+.card-footer{
+    background-color: #f9ab00;
+    color: "#ffffff";
 }

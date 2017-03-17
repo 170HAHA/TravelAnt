@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <!-- Google Analytics Content Experiment code -->
-    <script>function utmx_section(){}function utmx(){}(function(){var
+    <!--script>function utmx_section(){}function utmx(){}(function(){var
     k='141839730-2',d=document,l=d.location,c=d.cookie;
     if(l.search.indexOf('utm_expid='+k)>0)return;
     function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
@@ -12,7 +12,7 @@
     '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
     valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
     '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-    </script><script>utmx('url','A/B');</script>
+    </script><script>utmx('url','A/B');</script-->
     <!-- End of Google Analytics Content Experiment code -->
 
 
@@ -341,10 +341,13 @@
                 new_html = '<div align = "middle" ><h3 align = "middle" class="card-title" style="margin-bottom: 10px; margin-top: 0px;">No Search Result</h3></div>';
             }
             else {
+                new_html = '<div style="text-align:center">';
                 for(var i = 0; i < Math.min(10,res["businesses"].length); ++i) {
+                    if (i == 0 || i == 2 || i == 4 || i == 6 || i == 8) 
+                        new_html += '<div class="row"><div class="col-xs-10 col-xs-push-1 col-sm-8 col-sm-push-2 card-deck">';
                     var idd = "plus"+i;
                     var imglink = "/img/icon.jpg";
-                    var urllink = '/plan/'+"{{trip._id}}";
+                    var urllink = '/planA/'+"{{trip._id}}";
                     var activityname = "";
 
                     if(res["businesses"][i].hasOwnProperty("image_url")) {
@@ -357,11 +360,28 @@
                         activityname = res["businesses"][i]["name"];
                     }
 
+                    
+                    new_html += '<div class="card">'
+                                +'<img class="card-img-top" href='+urllink+' src='+imglink+' alt="Card image cap">'
+                                +'<div class="card-block">'
+                                +'<a href='+urllink+' target="_blank"><h4 class="card-title" style="font-size:15px; color:#444444">'+ activityname +'</h4></a>'
+                                /*+' <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'*/
+                                + '</div>'
+                                + '<button id="'+idd+'"' +' class="btn btn-waring card-footer addAct">'
+                                + '<small class="text-muted" style="color:#ffffff">Add</small>'
+                                + '</button>'
+                                +'</div>'
+                    
+                    /*
                     new_html = new_html +' <div class = "well well-lg activity-item" ><a href='
                     +urllink+' target="_blank"><img align = "left" class="img-rounded col-xs-0 col-sm-3" src='+imglink+' style = "width:40%;" ></a>'+ '<a href='+urllink
                     +' target="_blank"><div align = "left" class="card-title" style="margin-top: 10px; margin-left: 10px; font-size: 15px">'
-                    +activityname+'</div></a>'+'<button id="'+idd+'"' +' type="button" class="btn btn-warning addActoe" style = "margin-left: 160px; margin-top: 30px">+</button>' +'</div>';
+                    +activityname+'</div></a>'+'<button id="'+idd+'"' +' type="button" class="btn btn-warning addAct" style = "margin-left: 160px; margin-top: 30px">+</button>' +'</div>';
+                    */
+                    if (i == 1 || i == 3 || i == 5 || i == 7 || i == 9)
+                        new_html += '</div></div></br>';
                 }
+                new_html += '</div>';
             }
             console.log("Searched...");
             var details_div = $('.showresult');
@@ -409,7 +429,7 @@
 
 
                     $.post('/addtoDB', jsonadd, function() {
-                        var to = '/plan'+'{{AB}}'+'?id='+tripID;
+                        var to = '/planA'+'?id='+tripID;
                         console.log("debug",to);
                         window.location.href = to;
                     });
