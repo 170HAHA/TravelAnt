@@ -15,7 +15,7 @@ exports.add = function(req, res){
     newActivity.activityName = activityName;
     newActivity.activityVotes = activityVotes;
     newActivity.yelpUrl = yelpUrl;
-    newActivity.activityComments = activityComments;
+    newActivity.activityComments = activityComments.substr(0, 45) + "...";
 
     
     models.Trip.findOneAndUpdate({_id: tripID}, {$push: {_activityList: newActivity}}, function(err,r){
